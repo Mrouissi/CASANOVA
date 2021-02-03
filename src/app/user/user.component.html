@@ -1,0 +1,98 @@
+<app-header></app-header>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper style="    margin-top: 3%;">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Votre commande</ng-template>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">En attente</mat-radio-button>
+          
+              <img src="assets/images/info.png" style="    width: 1.5%;
+              margin-left: 2%;" tooltip="Notre équipe technique est en train de traiter votre dossier !"
+              placement="right">
+
+
+            <br>
+            <mat-radio-button  style="    margin-bottom: 2%;"  value="2">Validée</mat-radio-button>
+            <br>
+            <mat-radio-button  style="    margin-bottom: 2%;"  value="2">Enregistrée</mat-radio-button>
+
+          </mat-radio-group>
+        <div>
+          <button mat-button matStepperNext style="    float: right;">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Votre acompte">
+      <form [formGroup]="secondFormGroup">
+        <p>Votre acompte est réçu de : </p>
+
+        <mat-form-field>
+          <input matInput formControlName="secondCtrl" 
+                 required>
+        </mat-form-field>
+        <p>£</p>
+
+       
+      </form>
+<p style="    font-weight: 700;
+color: #f1ad48;
+FONT-SIZE: medium;">Dans le cas échéant </p>
+      <form [formGroup]="secondFormGroup">
+        <p>Votre acompte est encaissé de : </p>
+
+        <mat-form-field>
+          <input matInput formControlName="secondCtrl" 
+                 required>
+        </mat-form-field>
+        <p>£</p>
+
+        <div  style="    float: right;">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Votre chantier">
+       <p>Votre chantier est :  </p>
+       <select 
+       style="width: 20%;"
+       id="contactMethod" 
+       class="form-control"
+      >
+       <option >En cours de validation</option>
+       <option >Validé</option>
+       <option >Programmé le </option>
+       <option >En attente</option>
+       <option >Suspendu</option>
+       <option >Annulé</option>
+       <option >Prét</option>
+       <option >Terminé (en attente de réglement) </option>
+       <option >En cours de finition</option>
+       <option >Terminé (réglement réçu)</option>
+   </select>
+          
+        <div style="float: right;">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="SAV">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    
+    <mat-step [stepControl]="secondFormGroup" label="votre avis">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <p style="    width: 223%;
+          ">Laissez-nous votre avis et aidez-nous à améliorer nos services  </p>
+          <mat-icon aria-hidden="false" aria-label="Example smile icon">smile</mat-icon>
+          <textarea matInput placeholder=""></textarea>
+        </mat-form-field>
+        <div style="float: right;" >
+          <button mat-button matStepperPrevious>Back</button>
+        </div>
+      </form>
+    </mat-step>
+
+  </mat-horizontal-stepper>

@@ -1,0 +1,7 @@
+.dropdown-menu ng-star-inserted show{
+    inset: 100% auto auto 0px;
+    transform: translateY(-474px);
+  }
+  body bs-dropdown-container{
+    left: -116px;
+  }

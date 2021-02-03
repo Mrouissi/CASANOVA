@@ -1,0 +1,24 @@
+<div class="background" [style.background-image]="'url(assets/images/toiture.jpg)' ">
+</div>
+<div class="wrapper" style="    z-index: 1000;
+transform: translate(0%, -133%);" >
+    <div class="container" >
+        <img src="assets/images/logo.png" 
+         title="Label France Toitures" style="margin-top: -138%; width: 20%;  margin-left: -12%;">
+        <h1 style="margin-top: -71%; color:aliceblue; margin-right: 15%; margin-bottom: 15%; margin-left: 36%;  font-style: italic;">Label France Toitures</h1>
+        <div style=" width: 30%;margin-left: 39%;     margin-top: 30%; ">
+
+            <form>
+                <input type="text" class="form-control" name="userLogin" required placeholder="Identifiant"
+                    style="margin-bottom: 5%;" />
+                <input type="password" class="form-control" name="userPwsd" required placeholder="Mot de passe"
+                    style="margin-bottom: 5%;" />
+                <button type="button" class="btn btn-success" style="float: right;" (click)="gotoUser()">
+                    Se connecter
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
