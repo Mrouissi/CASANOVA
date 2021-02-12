@@ -5,7 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DisponibilityComponent } from './disponibility.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [DisponibilityComponent],

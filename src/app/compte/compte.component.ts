@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./compte.component.css']
 })
 export class CompteComponent implements OnInit {
-
+user = { name: "" , adresse :"" , ville:""  , code :"" , portable :"" , fixe :"" , email :"" , civilite :"" , profession :  ""} 
   constructor() { }
 
   ngOnInit(): void {
