@@ -4,7 +4,7 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Votre commande</ng-template>
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button [checked]="compte.selected" [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }"
+        <mat-radio-button 
           style="      margin-top: 2%;  margin-bottom: 2%;" value="1">Reçue ( En cours d'enregistrement)
         </mat-radio-button>
 
@@ -14,10 +14,10 @@
 
 
         <br>
-        <mat-radio-button [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }" style="    margin-bottom: 2%;"
+        <mat-radio-button  style="    margin-bottom: 2%;"
           value="2">En attente</mat-radio-button>
         <br>
-        <mat-radio-button [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }" style="    margin-bottom: 2%;"
+        <mat-radio-button  style="    margin-bottom: 2%;"
           value="2">Enregistrée</mat-radio-button>
 
       </mat-radio-group>
@@ -122,7 +122,7 @@
         <label for="file">Choose File</label>
         <input type="file"
                id="file"
-               (change)="handleFileInput($event.target.files)">
+               > <!--(change)="handleFileInput()"-->
     </div>
     </form>
   </mat-step>
