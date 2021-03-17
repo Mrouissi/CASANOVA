@@ -8,12 +8,12 @@ transform: translate(0%, -133%);" >
         <h1 style="margin-top: -71%; color:aliceblue; margin-right: 15%; margin-bottom: 15%; margin-left: 36%;  font-style: italic;">Label France Toitures</h1>
         <div style=" width: 30%;margin-left: 39%;     margin-top: 30%; ">
 
-            <form>
-                <input type="text" class="form-control" name="userLogin" required placeholder="Identifiant"
+            <form id="authenticate" action="login" method="post">
+                <input type="text" class="form-control" name="email" required placeholder="Identifiant"
                     style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" name="userPwsd" required placeholder="Mot de passe"
+                <input type="password" class="form-control" name="password" required placeholder="Mot de passe"
                     style="margin-bottom: 5%;" />
-                <button type="button" class="btn btn-success" style="float: right;" (click)="gotoUser()">
+                <button type="button" class="btn btn-success" style="float: right;" (click)="doLogin()">
                     Se connecter
                 </button>
             </form>

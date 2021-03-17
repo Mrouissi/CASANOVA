@@ -9,6 +9,8 @@ import { DisponibilityModule } from './disponibility/disponibility.module';
 import { CompteModule } from './compte/compte.module';
 import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { ListComptesModule } from './list-comptes/list-comptes.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { ListComptesModule } from './list-comptes/list-comptes.module';
     UserModule,
     DisponibilityModule,
     CompteModule,
+    FormsModule,
+    HttpClientModule,
     ListComptesModule
  
   ],
