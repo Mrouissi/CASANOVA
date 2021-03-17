@@ -12,6 +12,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from '../header/header.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 
@@ -25,6 +26,7 @@ import { HeaderComponent } from '../header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    MatDatepickerModule,
     ReactiveFormsModule,
     MatRadioModule,
     TooltipModule.forRoot() ,

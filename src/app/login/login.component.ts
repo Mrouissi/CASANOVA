@@ -14,6 +14,6 @@ export class LoginComponent implements OnInit {
   }
 
   gotoUser(){
-      this.router.navigate(['user']);  
+      this.router.navigate(['list']);  
   }
 }

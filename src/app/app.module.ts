@@ -7,12 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { DisponibilityModule } from './disponibility/disponibility.module';
 import { CompteModule } from './compte/compte.module';
+import { ListComptesComponent } from './list-comptes/list-comptes.component';
+import { ListComptesModule } from './list-comptes/list-comptes.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ListComptesComponent,
     
   ],
   imports: [
@@ -21,7 +24,8 @@ import { CompteModule } from './compte/compte.module';
     BrowserAnimationsModule,
     UserModule,
     DisponibilityModule,
-    CompteModule
+    CompteModule,
+    ListComptesModule
  
   ],
   providers: [],

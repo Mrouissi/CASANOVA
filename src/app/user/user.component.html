@@ -1,98 +1,130 @@
 <app-header></app-header>
-  <mat-horizontal-stepper [linear]="isLinear" #stepper style="    margin-top: 3%;">
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Votre commande</ng-template>
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">En attente</mat-radio-button>
-          
-              <img src="assets/images/info.png" style="    width: 1.5%;
-              margin-left: 2%;" tooltip="Notre équipe technique est en train de traiter votre dossier !"
-              placement="right">
+<mat-horizontal-stepper [linear]="isLinear" #stepper style="    margin-top: 3%;">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Votre commande</ng-template>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button [checked]="compte.selected" [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }"
+          style="      margin-top: 2%;  margin-bottom: 2%;" value="1">Reçue ( En cours d'enregistrement)
+        </mat-radio-button>
+
+        <img src="assets/images/info.png" style="    width: 1.5%;
+              margin-left: 2%;" tooltip="En attente de validation technique par le bureau d'études !"
+          placement="right">
 
 
-            <br>
-            <mat-radio-button  style="    margin-bottom: 2%;"  value="2">Validée</mat-radio-button>
-            <br>
-            <mat-radio-button  style="    margin-bottom: 2%;"  value="2">Enregistrée</mat-radio-button>
+        <br>
+        <mat-radio-button [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }" style="    margin-bottom: 2%;"
+          value="2">En attente</mat-radio-button>
+        <br>
+        <mat-radio-button [ngStyle]="{'color':compte.selected === 'true' ? 'grey' : '' }" style="    margin-bottom: 2%;"
+          value="2">Enregistrée</mat-radio-button>
 
-          </mat-radio-group>
-        <div>
-          <button mat-button matStepperNext style="    float: right;">Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Votre acompte">
-      <form [formGroup]="secondFormGroup">
-        <p>Votre acompte est réçu de : </p>
+      </mat-radio-group>
+      <div>
+        <button mat-button matStepperNext style="    float: right;">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Votre acompte">
+    <form [formGroup]="secondFormGroup">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
+          Reçu pour un montant de xxxx,xx £</mat-radio-button>
 
-        <mat-form-field>
-          <input matInput formControlName="secondCtrl" 
-                 required>
-        </mat-form-field>
-        <p>£</p>
 
-       
-      </form>
-<p style="    font-weight: 700;
-color: #f1ad48;
-FONT-SIZE: medium;">Dans le cas échéant </p>
-      <form [formGroup]="secondFormGroup">
-        <p>Votre acompte est encaissé de : </p>
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Encaissement prévu le :<mat-form-field
+            appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-radio-button>
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Encaissé</mat-radio-button>
 
-        <mat-form-field>
-          <input matInput formControlName="secondCtrl" 
-                 required>
-        </mat-form-field>
-        <p>£</p>
+      </mat-radio-group>
 
-        <div  style="    float: right;">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Votre chantier">
-       <p>Votre chantier est :  </p>
-       <select 
-       style="width: 20%;"
-       id="contactMethod" 
-       class="form-control"
-      >
-       <option >En cours de validation</option>
-       <option >Validé</option>
-       <option >Programmé le </option>
-       <option >En attente</option>
-       <option >Suspendu</option>
-       <option >Annulé</option>
-       <option >Prét</option>
-       <option >Terminé (en attente de réglement) </option>
-       <option >En cours de finition</option>
-       <option >Terminé (réglement réçu)</option>
-   </select>
-          
-        <div style="float: right;">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="SAV">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-    </mat-step>
-    
-    <mat-step [stepControl]="secondFormGroup" label="votre avis">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <p style="    width: 223%;
-          ">Laissez-nous votre avis et aidez-nous à améliorer nos services  </p>
-          <mat-icon aria-hidden="false" aria-label="Example smile icon">smile</mat-icon>
-          <textarea matInput placeholder=""></textarea>
-        </mat-form-field>
-        <div style="float: right;" >
-          <button mat-button matStepperPrevious>Back</button>
-        </div>
-      </form>
-    </mat-step>
 
-  </mat-horizontal-stepper>
+
+      <div style="    float: right;">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Votre chantier">
+    <p>Votre chantier est : </p>
+    <form [formGroup]="thirdFormGroup">
+
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
+          En attente de programmation </mat-radio-button>
+
+        <img src="assets/images/info.png" style="    width: 1.5%;
+          margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date d'intervention !" placement="right">
+
+
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Chantier en cours</mat-radio-button>
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , en attente de réglement</mat-radio-button>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , réglement réçu de xxxx,xx £
+        </mat-radio-button>
+
+      </mat-radio-group>
+      <div style="float: right;">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="SAV">
+    <form [formGroup]="thirdFormGroup">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
+          Demande prise en compte en attente de visite technique  </mat-radio-button>
+        <img src="assets/images/info.png" style="    width: 1.5%;
+           margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date de visite !" placement="right">
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">En attente de programmation</mat-radio-button>
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">En cours</mat-radio-button>
+
+        <br>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , en attente de réglement</mat-radio-button>
+        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , réglement réçu de xxxx,xx £
+        </mat-radio-button>
+
+      </mat-radio-group>
+      <div style="float: right;">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" label="vos documents ">
+    <form [formGroup]="secondFormGroup">
+      <p>Type de documents</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <select matNativeControl required>
+          <option value="volvo">Devis/Commande</option>
+          <option value="saab">Facture</option>
+          <option value="mercedes">Divers</option>
+          <option value="audi">Photos</option>
+        </select>
+      </mat-form-field>
+      <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file"
+               id="file"
+               (change)="handleFileInput($event.target.files)">
+    </div>
+    </form>
+  </mat-step>
+
+</mat-horizontal-stepper>

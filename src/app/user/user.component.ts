@@ -12,6 +12,12 @@ export class UserComponent implements OnInit {
   isLinear = false;
   public firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
+  fourthFormGroup!: FormGroup
+compte = {
+  'selected' : true
+}
+  fileToUpload!: File ;
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -22,5 +28,16 @@ export class UserComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
   }
+  handleFileInput(files: FileList) 
+{
+  this.fileToUpload == null ? this.fileToUpload : files.item(0);
 }
+}
+
