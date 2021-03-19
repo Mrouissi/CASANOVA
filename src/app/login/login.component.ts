@@ -18,9 +18,10 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    let resp = this.service.login(this.username, this.password);
+    this.router.navigate(["/regist"])
+    /*let resp = this.service.login(this.username, this.password);
     resp.subscribe(data => {
       this.router.navigate(["/compte"])
-    });
+    });*/
   }
 }
