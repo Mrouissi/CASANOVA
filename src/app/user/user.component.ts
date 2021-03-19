@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UserService } from './user.service';
 
 
 @Component({
@@ -19,9 +20,10 @@ compte = {
 }
   fileToUpload!: File ;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private service: UserService) {}
 
   ngOnInit() {
+    this.service.getListAccomptes().subscribe();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
