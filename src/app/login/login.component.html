@@ -9,11 +9,11 @@ transform: translate(0%, -133%);" >
         <div style=" width: 30%;margin-left: 39%;     margin-top: 30%; ">
 
             <form id="authenticate" action="login" method="post">
-                <input type="text" class="form-control" name="email" required placeholder="Identifiant"
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required placeholder="Identifiant"
                     style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" name="password" required placeholder="Mot de passe"
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Mot de passe"
                     style="margin-bottom: 5%;" />
-                <button type="button" class="btn btn-success" style="float: right;" (click)="doLogin()">
+                <button type="submit" class="btn btn-success" style="float: right;" (click)="doLogin()">
                     Se connecter
                 </button>
             </form>
