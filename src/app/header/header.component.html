@@ -1,28 +1,30 @@
-<div style="    background-color: #58805a2b;
-width: 100%;
-">
-<img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
-<div class="btn-group" dropdown container="body" style="margin-left: 69%; margin-top: 0.2%;">
-  <button id="button-container" dropdownToggle type="button" class="  dropdown-toggle" style="  background-color: Transparent;
-  background-repeat:no-repeat;
-  border: none;
-  cursor:pointer;
-  overflow: hidden;
-  outline:none; "
-          aria-controls="dropdown-container">
-                                                                                                                      
-<img src="assets/images/user.png" style="       width: 25%;
-height: 100%;
-filter: invert(54%) sepia(20%) saturate(3219%) hue-rotate(52deg) brightness(107%) contrast(89%); ">
-  </button>
-  <ul id="dropdown-container" *dropdownMenu class="dropdown-menu"
-      role="menu" aria-labelledby="button-container">
-    <li role="menuitem"><a class="dropdown-item" href="/compte">Mon compte</a></li>
-    <li role="menuitem"><a class="dropdown-item" href="/dispo">Mes disponibilités</a></li>
-    <li role="menuitem"><a class="dropdown-item" href="#">Historiques</a></li>
-    <li class="divider dropdown-divider"></li>
-    <li role="menuitem"><a class="dropdown-item" href="/login">Se déconnecter</a>
-    </li>
-  </ul>
-</div>
-</div>
+<div style="background-color: #58805a2b;width: 100%;">
+  <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
+  <div class="btn-group" dropdown container="body" style="margin-left: 69%; margin-top: 0.2%;">
+    <p>{{name}}</p> 
+   <button id="button-container" dropdownToggle type="button" class="  dropdown-toggle" style="  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none; "
+    aria-controls="dropdown-container">
+                                                                                                                     
+  <img src="assets/images/user.png" style="width: 25%;height: 100%;
+  filter: invert(54%) sepia(20%) saturate(3219%) hue-rotate(52deg) brightness(107%) contrast(89%); ">
+    </button>
+    <ul id="dropdown-container" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-container">
+      <li role="menuitem"><a class="dropdown-item" href="/compte">Mon compte</a></li>
+      <li role="menuitem" tooltip="Veuillez nous communiquer vos dates de vacances !"
+      placement="right"><a class="dropdown-item" href="/dispo">Mes disponibilités</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="/cmd">Mes commandes</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="/contact">Contactez-nous</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Se déconnecter</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+  
+  

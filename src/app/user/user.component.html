@@ -3,128 +3,157 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Votre commande</ng-template>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button 
-          style="      margin-top: 2%;  margin-bottom: 2%;" value="1">Reçue ( En cours d'enregistrement)
+      <mat-radio-group aria-label="Select an option" formControlName="stateCMD" (change)="cmdChange($event)">
+        <mat-radio-button  [disabled]="role != 'ROLE_ADMIN'"  (change)="radioChange($event)" 
+          [checked]="cmd == 'COMMANDE_RECU'" 
+          style="margin-top: 2%;  margin-bottom: 2%;" value="COMMANDE_RECU">Reçue ( En cours d'enregistrement)
         </mat-radio-button>
-
         <img src="assets/images/info.png" style="    width: 1.5%;
               margin-left: 2%;" tooltip="En attente de validation technique par le bureau d'études !"
           placement="right">
-
-
         <br>
-        <mat-radio-button  style="    margin-bottom: 2%;"
-          value="2">En attente</mat-radio-button>
+        <mat-radio-button  style="margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChange($event)" 
+        [checked]="cmd == 'COMMANDE_ATTENTE'"
+          value="COMMANDE_ATTENTE">En attente</mat-radio-button>
         <br>
-        <mat-radio-button  style="    margin-bottom: 2%;"
-          value="2">Enregistrée</mat-radio-button>
-
+        <mat-radio-button  style="margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"  (change)="radioChange($event)" 
+        [checked]="cmd == 'COMMANDE_ENREGISTREE'"
+          value="COMMANDE_ENREGISTREE">Enregistrée</mat-radio-button>
       </mat-radio-group>
       <div>
-        <button mat-button matStepperNext style="    float: right;">Next</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
       </div>
+
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="Votre acompte">
     <form [formGroup]="secondFormGroup">
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
-          Reçu pour un montant de xxxx,xx £</mat-radio-button>
-
-
+        <mat-radio-button  [disabled]="role != 'ROLE_ADMIN'"  (change)="radioChangeAcompte($event)" 
+        [checked]="acompte == 'ACOMPTE_ATTENTE'" 
+        style="margin-top: 2%;  margin-bottom: 2%;" value="ACOMPTE_ATTENTE">
+          Reçu pour un montant de {{montant}} <img src="assets/images/euro.png" style="width: 2%;">  </mat-radio-button>
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Encaissement prévu le :<mat-form-field
+        <mat-radio-button [disabled]="role != 'ROLE_ADMIN'"  (change)="radioChangeAcompte($event)" 
+        [checked]="acompte == 'ACOMPTE_ENCAISSEMENT'" 
+        style="margin-top: 2%;  margin-bottom: 2%;" value="ACOMPTE_ENCAISSEMENT" >Encaissement prévu le :<mat-form-field
             appearance="fill">
-            <mat-label>Choose a date</mat-label>
+            <mat-label>Choisir une date</mat-label>
             <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </mat-radio-button>
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Encaissé</mat-radio-button>
-
+        <mat-radio-button [disabled]="role != 'ROLE_ADMIN'"  (change)="radioChangeAcompte($event)" 
+        [checked]="acompte == 'ACOMPTE_ENCAISSE'" 
+        style="margin-top: 2%;  margin-bottom: 2%;" value="ACOMPTE_ENCAISSE">Encaissé</mat-radio-button>
       </mat-radio-group>
-
-
-
       <div style="    float: right;">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="Votre chantier">
-    <p>Votre chantier est : </p>
+    <p style="font-size: larger;
+    font-style: normal;">Votre chantier est : </p>
     <form [formGroup]="thirdFormGroup">
 
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
+        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeChantier($event)"
+        [checked]="cmd == 'CHANTIER_ATTENTE'" value="CHANTIER_ATTENTE">
           En attente de programmation </mat-radio-button>
-
         <img src="assets/images/info.png" style="    width: 1.5%;
           margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date d'intervention !" placement="right">
-
-
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Chantier en cours</mat-radio-button>
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeChantier($event)"
+        [checked]="cmd == 'CHANTIER_ENCOURS'" value="CHANTIER_ENCOURS">Chantier en cours</mat-radio-button>
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , en attente de réglement</mat-radio-button>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , réglement réçu de xxxx,xx £
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeChantier($event)"
+        [checked]="cmd == 'CHANTIER_TERMINE'" value="CHANTIER_TERMINE">Terminé , en attente de réglement</mat-radio-button>
+      <br>
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeChantier($event)"
+        [checked]="cmd == 'CHANTIER_REGLEMENT'" value="CHANTIER_REGLEMENT">Terminé , réglement réçu de xxxx,xx <img src="assets/images/euro.png" style="width: 2%;"> 
         </mat-radio-button>
 
       </mat-radio-group>
       <div style="float: right;">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="SAV">
     <form [formGroup]="thirdFormGroup">
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" value="1">
+        <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
+        [checked]="cmd == 'SAV_ATTENTE_VISITE_TECHNIQUE'" value="SAV_ATTENTE_VISITE_TECHNIQUE">
           Demande prise en compte en attente de visite technique  </mat-radio-button>
         <img src="assets/images/info.png" style="    width: 1.5%;
            margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date de visite !" placement="right">
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">En attente de programmation</mat-radio-button>
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
+        [checked]="cmd == 'SAV_ATTENTE_PROGRAMMATION'" value="SAV_ATTENTE_PROGRAMMATION">En attente de programmation : </mat-radio-button>
+        <input type="text" style="    margin-left: 1%;
+    border-color: #e9ecef;
+    width: 50%;
+        " [disabled]="role != 'ROLE_ADMIN'">
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">En cours</mat-radio-button>
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
+        [checked]="cmd == 'SAV_ENCOURS'" value="SAV_ENCOURS">En cours</mat-radio-button>
 
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , en attente de réglement</mat-radio-button>
-        <mat-radio-button style="    margin-bottom: 2%;" value="2">Terminé , réglement réçu de xxxx,xx £
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
+        [checked]="cmd == 'SAV_ATTENTE_REGLEMENT'" value="SAV_ATTENTE_REGLEMENT">Terminé , en attente de réglement</mat-radio-button>
+       <br>
+        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
+        [checked]="cmd == 'SAV_ENCAISSE'" value="SAV_ENCAISSE">Terminé , réglement réçu de xxxx,xx <img src="assets/images/euro.png" style="width: 2%;"> 
         </mat-radio-button>
 
       </mat-radio-group>
       <div style="float: right;">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="secondFormGroup" label="vos documents ">
     <form [formGroup]="secondFormGroup">
       <p>Type de documents</p>
       <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
-        <select matNativeControl required>
-          <option value="volvo">Devis/Commande</option>
-          <option value="saab">Facture</option>
-          <option value="mercedes">Divers</option>
-          <option value="audi">Photos</option>
+        <select matNativeControl required (change)="selectChange($event.target.value)">
+          <option value="Devis/Commande">Devis/Commande</option>
+          <option value="Facture">Facture</option>
+          <option value="Divers">Divers</option>
+          <option value="Photos">Photos</option>
         </select>
       </mat-form-field>
-      <div class="form-group">
-        <label for="file">Choose File</label>
+      <div class="form-group" style="margin-left: 30%;">
+        <label for="file">Choisir un fichier</label>
         <input type="file"
                id="file"
-               > <!--(change)="handleFileInput()"-->
+               (change)="handleFileInput($event)"> <!--(change)="handleFileInput()"-->
     </div>
+    <button class="btn btn-success" style="margin-top: 0%; ; float: right; margin-bottom: 2%;     font-size: revert;" (click)="upload()">Sauvegarder</button>
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Nom de document</th>
+              <th scope="col">Type de document</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let file of files" >
+              <td style="width: 40%;">{{file.name}}</td>
+              <td style="width: 40%;">{{file.type}}</td>
+              <td style="width: 20%;"><a (click)="downloadFile(file.id)"><img style="    width: 9%;" src="assets/images/download.png"></a></td>
+          </tr>
+      </tbody>
+  </table>
     </form>
   </mat-step>
-
 </mat-horizontal-stepper>

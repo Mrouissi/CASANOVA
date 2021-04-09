@@ -2,34 +2,28 @@
 width: 100%;">
     <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
 </div>
+<button class="btn btn-success" style="margin-top: 3%; ; float: right;     font-size: revert;">Exporter Excel</button>
+
+<div class="form-group form-inline" style="margin-top: 3%; margin-left: 2%;"> 
+    Rechercher : <input class="form-control ml-2" type="text" name="searchTerm" />
+    <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Test1</td>
-            <td>Otto</td>
-            <td><a (click)="Getdetails(0)"><img src="../../assets/images/loop.png"
+        <tr *ngFor="let user of users">
+            <th scope="row">{{user.email}}</th>
+            <td>{{user.nom}}</td>
+            <td>{{user.prenom}}</td>
+            <td><a (click)="Getdetails(user.id)"><img src="../../assets/images/loop.png"
                         style="width: 21px; height: 21px;"></a></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Test2</td>
-            <td>Thonton</td>
-            <td><img src="../../assets/images/loop.png" style="width: 21px; height: 21px;"></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>test3</td>
-            <td> add</td>
-            <td> <img src="../../assets/images/loop.png" style="width: 21px; height: 21px;"></td>
         </tr>
     </tbody>
 </table>

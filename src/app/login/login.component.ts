@@ -18,10 +18,23 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.router.navigate(["/regist"])
-    /*let resp = this.service.login(this.username, this.password);
+    let resp = this.service.login(this.username, this.password);
     resp.subscribe(data => {
-      this.router.navigate(["/compte"])
-    });*/
+      console.log('login data ===> ' , data);
+      let datas = JSON.stringify(data)
+      let res = JSON.parse(datas)
+      localStorage.clear();
+      localStorage.setItem('user', datas);
+      localStorage.setItem('name', res.nom + res.prenom);
+      if(res.role == "ROLE_ADMIN"){
+        this.router.navigate(["/list"])
+        localStorage.setItem('role', 'admin');
+      }else if (res.role == "ROLE_CLIENT"){
+      this.router.navigate(["/user"])
+      localStorage.setItem('role', 'user');
+      localStorage.setItem('idUser', res.id );
+
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
 <div style="background-color: #58805a2b;width: 100%;">
 <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
 <div class="btn-group" dropdown container="body" style="margin-left: 69%; margin-top: 0.2%;">
- 
+  <p>{{user.name}}</p> 
  <button id="button-container" dropdownToggle type="button" class="  dropdown-toggle" style="  background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
@@ -9,15 +9,17 @@
   overflow: hidden;
   outline:none; "
   aria-controls="dropdown-container">
-                                                                                                                      
+                                                                                                                   
 <img src="assets/images/user.png" style="width: 25%;height: 100%;
 filter: invert(54%) sepia(20%) saturate(3219%) hue-rotate(52deg) brightness(107%) contrast(89%); ">
   </button>
   <ul id="dropdown-container" *dropdownMenu class="dropdown-menu"
       role="menu" aria-labelledby="button-container">
     <li role="menuitem"><a class="dropdown-item" href="/compte">Mon compte</a></li>
-    <li role="menuitem"><a class="dropdown-item" href="/dispo">Mes disponibilités</a></li>
-    <li role="menuitem"><a class="dropdown-item" href="#">Mes documents</a></li>
+    <li role="menuitem"  tooltip="Veuillez nous communiquer vos dates de vacances !"
+    placement="right"><a class="dropdown-item" href="/dispo">Mes disponibilités</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="/cmd">Mes commandes</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="/contact">Contactez-nous</a></li>
     <li class="divider dropdown-divider"></li>
     <li role="menuitem"><a class="dropdown-item" href="#">Se déconnecter</a>
     </li>
@@ -28,12 +30,14 @@ filter: invert(54%) sepia(20%) saturate(3219%) hue-rotate(52deg) brightness(107%
 <h1 style="margin-top: 2%;
 margin-left: 2%;
 color: #6c757d;
-font-style: oblique;">Votre compte</h1>
+font-style: oblique;">
+<a (click)="goToAcceuil()"><img style="width: 2%;" src="assets/images/back.png">Acceuil /</a>Votre compte
+</h1>
 
 <form #MyForm="ngForm" class="col-12">
 
   <div class="form-row field">
-     <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="name">Name</label>
+     <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="name">Nom et prénom</label>
      <input type="text" class="form-control col-sm-7" required name="name" id="name" [(ngModel)]="user.name" #name="ngModel"/>
      <div *ngIf="!name.valid && name.touched"
           class="alert alert-danger" style="margin-left: 16.5%;
@@ -79,7 +83,7 @@ This is not a valid code postal !
 </div>
 
 <div class="form-row field">
-  <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="portable">portable</label>
+  <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="portable">Téléphone portable</label>
   <input type="text" class="form-control col-sm-3" name="portable" id="portable" [(ngModel)]="user.portable" />
   
   <!--required  #portable="ngModel"/>
@@ -89,7 +93,7 @@ This is not a valid code postal !
     Portable is required
   </div>!-->
 
-  <label class="col-sm-2 col-form-label "  for="fixe" style="margin-left: 7%; font-weight :bold;">Fixe</label>
+  <label class="col-sm-2 col-form-label "  for="fixe" style="margin-left: 7%; font-weight :bold;"> Téléphone Fixe</label>
   <input type="text" class="form-control col-sm-3" name="fixe" id="fice" [(ngModel)]="user.fixe" />
 </div>
 
@@ -129,7 +133,7 @@ This is not a valid code postal !
   </div>
 </div>
 
-<button class="btn btn-success" style="margin-top: 0%; ; float: right;">Save</button>
+<button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" (click)="saveUser(user)">Sauvegarder</button>
 </form>
 
 

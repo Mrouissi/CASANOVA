@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
-export class LoginService {
+export class ListComptesService {
 
   headers = new HttpHeaders({
     'content-type': 'application/json',
@@ -15,10 +14,9 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public login(email: string, password: string) {
-    return this.httpClient.post(
-      "http://localhost:8080/api/login",
-      {"username":email,"password":password},
+  public getListOfUsers() {
+    return this.httpClient.get(
+      "http://localhost:8080/api/users",
       { headers: this.headers })
   }
 }

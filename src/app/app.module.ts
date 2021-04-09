@@ -11,7 +11,9 @@ import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { ListComptesModule } from './list-comptes/list-comptes.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RegistryComponent } from './registry/registry.component';
+import { CommandeModule } from './commandes/commande.module';
+import { ContactModule } from './contact/contact.module';
+import { HeaderModule } from './header/header.module';
 
 
 @NgModule({
@@ -19,7 +21,6 @@ import { RegistryComponent } from './registry/registry.component';
     AppComponent,
     LoginComponent,
     ListComptesComponent,
-    RegistryComponent,
     
   ],
   imports: [
@@ -31,7 +32,10 @@ import { RegistryComponent } from './registry/registry.component';
     CompteModule,
     FormsModule,
     HttpClientModule,
-    ListComptesModule
+    ListComptesModule,
+    CommandeModule,
+    ContactModule,
+    HeaderModule
  
   ],
   providers: [],

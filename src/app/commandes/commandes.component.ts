@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-disponibility',
-  templateUrl: './disponibility.component.html',
-  styleUrls: ['./disponibility.component.css']
+  selector: 'app-commandes',
+  templateUrl: './commandes.component.html',
+  styleUrls: ['./commandes.component.css']
 })
-export class DisponibilityComponent implements OnInit {
+export class CommandesComponent implements OnInit {
   name: any;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.name =localStorage.getItem('name')
-
+    this.name = localStorage.getItem('name')
   }
   goToAcceuil(){
     this.router.navigate(["/user"])
