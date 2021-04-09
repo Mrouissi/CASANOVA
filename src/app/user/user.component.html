@@ -123,7 +123,7 @@
       <p>Type de documents</p>
       <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
-        <select matNativeControl required (change)="selectChange($event.target.value)">
+        <select matNativeControl required (change)="selectChange($event)">
           <option value="Devis/Commande">Devis/Commande</option>
           <option value="Facture">Facture</option>
           <option value="Divers">Divers</option>
