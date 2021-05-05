@@ -123,7 +123,7 @@
       <p>Type de documents</p>
       <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
-        <select matNativeControl required (change)="selectChange($event)">
+        <select matNativeControl required (change)="selectChange($event.srcElement.options.selectedIndex)">
           <option value="Devis/Commande">Devis/Commande</option>
           <option value="Facture">Facture</option>
           <option value="Divers">Divers</option>
@@ -134,7 +134,9 @@
         <label for="file">Choisir un fichier</label>
         <input type="file"
                id="file"
-               (change)="handleFileInput($event)"> <!--(change)="handleFileInput()"-->
+               name="file"
+               #file
+               (change)="handleFileInput($event)"> 
     </div>
     <button class="btn btn-success" style="margin-top: 0%; ; float: right; margin-bottom: 2%;     font-size: revert;" (click)="upload()">Sauvegarder</button>
 

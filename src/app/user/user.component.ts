@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserService } from './user.service';
+import { saveAs } from 'file-saver';
+import * as FileSaver from 'file-saver';
+
 
 
 @Component({
@@ -33,8 +36,11 @@ files =[{
   name: any;
   idD: any;
   categorie: any;
-  file: any;
-  constructor(private _formBuilder: FormBuilder, private service: UserService) {}
+  file : any ;
+  @ViewChild('File') File: ElementRef | undefined;
+  constructor(private _formBuilder: FormBuilder, private service: UserService) {
+
+  }
 
   ngOnInit() {
     this.name = localStorage.getItem('name')
@@ -84,23 +90,53 @@ files =[{
   }
 
   handleFileInput(event: any) 
-{ console.log("file data ===>", event.target.files[0]);
-this.file = event.target.files[0]
+{
+  console.log(event);
+
+    let elem = event.target;
+    if(elem.files.length > 0) {
+      let formData= new FormData()
+      console.log('dataaa 1',elem.files[0]);
+      console.log('dataa 2 ', elem.files[0].name);
+      formData.append('file', elem.files[0], elem.files[0].name)
+      this.file = formData
+      console.log('dataaa',JSON.stringify(formData));
+      let data = {
+        categorie : this.categorie,
+        file  : formData.get('file')
+      }
+      this.service.uploadFile(this.idD ,  elem.files[0] , this.categorie ).subscribe(data => {
+  
+      })
+    }
+ //this.file = event.target.files[0]
   //this.fileToUpload == null ? this.fileToUpload : files.item(0);
 }
 selectChange(event:any){
-  this.categorie = event;
+  if (event == 0){
+     this.categorie="Devis/Commande"
+
+  }else if (event == 1){
+     this.categorie="Facture"
+
+  }else if (event == 2){
+     this.categorie="Divers"
+
+  }else if (event == 3){
+     this.categorie="Photos"
+
+  }
+ 
 console.log(event);
 
 }
 upload(){
+  console.log("thiiiis ===> ", this.file);
   let data = {
     categorie : this.categorie,
     file : this.file
   }
-  this.service.uploadFile(this.idD , JSON.stringify(data)).subscribe(data => {
-  
-  })
+
 }
 radioChange(e:any){
 console.log("event", e);
@@ -118,10 +154,10 @@ radioChangeChantier(e:any){
 
 downloadFile(e:any){
   console.log("file", e);
-  
   this.service.downloadFile(this.idD,e).subscribe(data => {
     console.log('donwload ===>', data);
-    
+    const file = new Blob([data], {type: 'text/plain'});
+   FileSaver.saveAs(file, "test.txt");
   })
 
 }

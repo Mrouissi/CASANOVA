@@ -18,7 +18,7 @@ export class LoginService {
 
   public login(email: string, password: string) {
     return this.httpClient.post(
-      "http://localhost:8080/api/login",
+      "/api/api/login",
       {"username":email,"password":password},
       { headers: this.headers })
   }

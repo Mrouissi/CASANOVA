@@ -16,7 +16,7 @@ export class ListComptesService {
 
   public getListOfUsers() {
     return this.httpClient.get(
-      "http://localhost:8080/api/users",
+      "/api/api/users",
       { headers: this.headers })
   }
 }
