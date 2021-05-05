@@ -27,17 +27,13 @@ baseURL = "http://localhost:8080/api"
  
   }
 
-  downloadFile(id:number, idF:number){
-    return this.httpClient.get(this.baseURL + '/dossiers/'+ id + '/files/' + idF , { responseType:'text' })
- 
-  }
-
   uploadFile(id:number, data : File , cat : any ){
     const formData= new FormData()
 
     formData.append('file', data)
+    formData.append('category', cat)
 
-    return this.httpClient.post(this.baseURL + '/dossiers/'+ id + '/upload/' + cat ,   formData ,  {  reportProgress: true})
+    return this.httpClient.post(this.baseURL + '/dossiers/'+ id + '/upload' ,   formData ,  {  reportProgress: true})
 
   }
 }

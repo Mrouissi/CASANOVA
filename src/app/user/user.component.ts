@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserService } from './user.service';
-import { saveAs } from 'file-saver';
-import * as FileSaver from 'file-saver';
 
 
 
@@ -21,21 +19,17 @@ export class UserComponent implements OnInit {
 compte = {
   'selected' : true
 }
-  fileToUpload!: File ;
+  fileToUpload: any ;
 id = '';
 role = '';
 cmd = '';
 acompte ='';
 montant = 0;
 dateAcompte = '';
-files =[{
-  id: 0,
-  name :"",
-  type:""
-}]
+files =[] as any
   name: any;
   idD: any;
-  categorie: any;
+  categorie: any = "Devis/Commande";
   file : any ;
   @ViewChild('File') File: ElementRef | undefined;
   constructor(private _formBuilder: FormBuilder, private service: UserService) {
@@ -56,15 +50,15 @@ files =[{
       this.montant = res.dossiers[0].montant_acompte;
       this.dateAcompte = res.dossiers[0].date_commande;
       this.idD =  res.dossiers[0].id;
-      for(let i=0 ; i< res.dossiers[0].files.length ; i++){
-        if(res.dossiers[0].files.length > 0){
-          this.files =[]     
-             let obj = {id:0, name:"", type:""}
-           obj.id =res.dossiers[0].files[i].id;
+      for(let i=0 ; i < res.dossiers[0].files.length ; i++){
+        let obj = {id:0, name:"", category:"", type:"", data:""}
+        obj.id =res.dossiers[0].files[i].id;
         obj.name =res.dossiers[0].files[i].nom;
-        obj.type = res.dossiers[0].files[i].categorie;
+        obj.category =res.dossiers[0].files[i].categorie;
+        obj.type = res.dossiers[0].files[i].type;
+        obj.data = res.dossiers[0].files[i].data;
         this.files.push(obj)
-        }
+        console.log(this.files)
 
       }
       console.log("cmd ====>", this.cmd);
@@ -90,31 +84,13 @@ files =[{
   }
 
   handleFileInput(event: any) 
-{
-  console.log(event);
-
-    let elem = event.target;
-    if(elem.files.length > 0) {
-      let formData= new FormData()
-      console.log('dataaa 1',elem.files[0]);
-      console.log('dataa 2 ', elem.files[0].name);
-      formData.append('file', elem.files[0], elem.files[0].name)
-      this.file = formData
-      console.log('dataaa',JSON.stringify(formData));
-      let data = {
-        categorie : this.categorie,
-        file  : formData.get('file')
-      }
-      this.service.uploadFile(this.idD ,  elem.files[0] , this.categorie ).subscribe(data => {
-  
-      })
-    }
- //this.file = event.target.files[0]
-  //this.fileToUpload == null ? this.fileToUpload : files.item(0);
-}
+  {
+    console.log(event);
+    this.fileToUpload = event.target;
+  }
 selectChange(event:any){
   if (event.srcElement.options.selectedIndex == 0){
-     this.categorie="Devis/Commande"
+     this.categorie="Devis%2FCommande"
 
   }else if (event.srcElement.options.selectedIndex == 1){
      this.categorie="Facture"
@@ -131,12 +107,12 @@ console.log(event);
 
 }
 upload(){
-  console.log("thiiiis ===> ", this.file);
-  let data = {
-    categorie : this.categorie,
-    file : this.file
-  }
+  if(this.fileToUpload.files.length > 0) {
+  
+    this.service.uploadFile(this.idD ,  this.fileToUpload.files[0] , this.categorie ).subscribe(data => {
 
+    })
+  }
 }
 radioChange(e:any){
 console.log("event", e);
@@ -152,14 +128,15 @@ radioChangeChantier(e:any){
 
 }
 
-downloadFile(e:any){
-  console.log("file", e);
-  this.service.downloadFile(this.idD,e).subscribe(data => {
-    console.log('donwload ===>', data);
-    const file = new Blob([data], {type: 'text/plain'});
-   FileSaver.saveAs(file, "test.txt");
-  })
+  downloadFile(file:any){
+    console.log(file);
+    const linkSource = 'data:'+file.type+";base64,"+file.data
+    const downloadLink = document.createElement("a");
+    const fileName = file.name;
 
-}
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
 }
 
