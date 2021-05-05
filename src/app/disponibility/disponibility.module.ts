@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatNativeDateModule } from '@angular/material/core';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DisponibilityComponent],
@@ -19,7 +20,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule
   ],
   providers: [  
     MatDatepickerModule,  

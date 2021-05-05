@@ -113,16 +113,16 @@ files =[{
   //this.fileToUpload == null ? this.fileToUpload : files.item(0);
 }
 selectChange(event:any){
-  if (event == 0){
+  if (event.srcElement.options.selectedIndex == 0){
      this.categorie="Devis/Commande"
 
-  }else if (event == 1){
+  }else if (event.srcElement.options.selectedIndex == 1){
      this.categorie="Facture"
 
-  }else if (event == 2){
+  }else if (event.srcElement.options.selectedIndex == 2){
      this.categorie="Divers"
 
-  }else if (event == 3){
+  }else if (event.srcElement.options.selectedIndex == 3){
      this.categorie="Photos"
 
   }

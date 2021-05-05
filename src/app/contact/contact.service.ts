@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CommandeService {
+export class ContactService {
 
   headers = new HttpHeaders({
     'content-type': 'application/json',
@@ -15,10 +15,11 @@ export class CommandeService {
    
   constructor(private httpClient: HttpClient) { }
 
-  public getAll() {
+  public addComment(cmt : string) {
     let id = JSON.parse(localStorage.getItem('idUser') || '')
-    return this.httpClient.get(
-      "/api/api/clients/"+ id +"/dossiers",
+
+    return this.httpClient.put(
+      "/api/contact",
+      {id  , cmt },
       { headers: this.headers })
-  }
-}
+  }}

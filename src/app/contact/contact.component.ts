@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContactService } from './contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -14,14 +15,24 @@ export class ContactComponent implements OnInit {
   overStar: number | undefined;
   percent!: number;
   y : any;
-  constructor(private router: Router) { }
+  user = {
+    'message' : ''
+  }
+  constructor(private router: Router , private service : ContactService) { }
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name')
   }
 
- 
- 
+ save(event:any){
+this.service.addComment(this.user.message).subscribe(data=>{
+  console.log(data);
+
+})
+   console.log(event);
+   
+ }
+
  
   hoveringOver(value: number): void {
     this.overStar = value;

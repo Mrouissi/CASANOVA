@@ -37,18 +37,18 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Numero de commande</th>
+                <th scope="col">Etat de commande</th>
                 <th scope="col">Date de commande</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr >
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td><a><img src="../../assets/images/download.png"
+            <tr  *ngFor="let cmd of cmds">
+                <th scope="row">{{cmd.etat_dossier}}</th>
+                <td>{{cmd.date_commande}}</td>
+                <td>{{cmd.montant_acompte}}</td>
+                <td><a (click)="Getdetails()"><img src="../../assets/images/loop.png"
                     style="width: 21px; height: 21px;"></a></td>
             </tr>
         </tbody>

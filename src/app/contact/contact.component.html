@@ -35,7 +35,10 @@
     </h1>
     <form>
         <div class="form-group" style="margin-right: 5%; margin-left: 5%;">
-            <textarea  placeholder="Exprimez vous !" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea 
+            [(ngModel)]="user.message" placeholder="Exprimez vous !" class="form-control" 
+            id="exampleFormControlTextarea1" rows="3" name="message"
+            [ngModelOptions]="{standalone: true}" ></textarea>
           </div>
     </form>
         <div style="margin-left:45%; margin-top: 4%;">
@@ -48,7 +51,10 @@
 <input type="text" value="0000000" style="    border: none;">
 <input type="text" value="test@test.com" style="    border: none;">
 </div>
-    <div style="margin-left:47%; margin-top: 10%;" >
+<button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" (click)="save(user)">Sauvegarder</button>
+
+
+  <!-- <div style="margin-left:47%; margin-top: 10%;" >
         <p style="font-family: cursive;
         font-style: oblique;
         font-size: x-large;     margin-left: -6%;"> Votre Avis nous intéresse !</p>
@@ -58,6 +64,6 @@
             {{i < v ? '&#9733;' : '&#9734;'}}
           </button>
         </ng-template>
-      </div>
+      </div> -->  
 
 
