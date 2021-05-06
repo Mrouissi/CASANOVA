@@ -37,7 +37,9 @@ baseURL = "http://localhost:8080/api"
 
   }
   editCompte(id:number , data : any){
-    return this.httpClient.put( '/api/api/dossiers/'+ id , data ,  { 'headers': this.headers })
+   let idc = JSON.parse(localStorage.getItem('idUser') || '')
+
+    return this.httpClient.put( '/api/api/dossiers/'+ id +'/'+ idc, data ,  { 'headers': this.headers })
  
   }
 }

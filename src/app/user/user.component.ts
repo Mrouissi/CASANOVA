@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { UserService } from './user.service';
 
 
@@ -33,6 +33,8 @@ files =[] as any
   file : any ;
   @ViewChild('File') File: ElementRef | undefined;
   dossier: any;
+  msg = '';
+  sav: any;
   constructor(private _formBuilder: FormBuilder, private service: UserService) {
 
   }
@@ -50,8 +52,10 @@ files =[] as any
       this.acompte = res.dossiers[0].etat_acompte;
       this.montant = res.dossiers[0].montant_acompte;
       this.dateAcompte = res.dossiers[0].date_commande;
+      this.sav =res.dossiers[0].etat_sav;
       this.idD =  res.dossiers[0].id;
       this.dossier = res.dossiers[0];
+      this.msg = res.dossiers[0].msg_sav;
       for(let i=0 ; i < res.dossiers[0].files.length ; i++){
         let obj = {id:0, name:"", category:"", type:"", data:""}
         obj.id =res.dossiers[0].files[i].id;
@@ -73,7 +77,8 @@ files =[] as any
       secondCtrl: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+      thirdCtrl: ['', Validators.required],
+    'msg': new FormControl(''),
     });
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
@@ -83,7 +88,10 @@ files =[] as any
   cmdChange(e:any){
     console.log(e); 
   }
-
+change(e:any){
+  console.log(e);
+  
+}
   handleFileInput(event: any) 
   {
     console.log(event);
@@ -118,17 +126,28 @@ upload(){
 radioChange(e:any){
   this.dossier.etat_dossier = e.value;
   console.log("dossier ==> ", this.dossier);
- // this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
-//console.log(data);
- // })
-console.log("event", e);
+ 
 
 
+}
+saveDossier(){
+  this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
+    //console.log(data);
+      })
 }
 radioChangeAcompte(e:any){
 
 }
 radioChangeSAV(e:any){
+
+  this.dossier.etat_sav = e.value;
+  console.log("dossier ==> ", this.thirdFormGroup.controls.msg.value);
+  this.thirdFormGroup.controls['msg'].valueChanges.subscribe(
+    (selectedValue) => {
+      console.log(selectedValue);
+      this.dossier.msg_sav = selectedValue;
+    }
+);
 
 }
 radioChangeChantier(e:any){

@@ -61,11 +61,9 @@ export class ListComptesComponent implements OnInit {
     })
   }
   export(){
-    this.service.export().subscribe(data =>{
-      console.log("export data ==> ", data);
-      
-      
-    })
+    this.service.export().subscribe(data =>{})
+    window.open("http://localhost:8080/api/client/export/excel");
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

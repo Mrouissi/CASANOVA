@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatStepperModule} from '@angular/material/stepper';
 import { UserComponent } from './user.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -31,6 +31,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatRadioModule,
     TooltipModule.forRoot() ,
     MatIconModule,
+    FormsModule
    ]
 })
 export class UserModule { }

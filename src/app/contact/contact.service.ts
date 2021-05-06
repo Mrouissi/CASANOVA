@@ -24,5 +24,5 @@ export class ContactService {
       this.baseURL+"/contact",
       formData
     )
-  }
+    }
 }

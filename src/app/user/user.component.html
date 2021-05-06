@@ -21,7 +21,7 @@
           value="COMMANDE_ENREGISTREE">Enregistrée</mat-radio-button>
       </mat-radio-group>
       <div>
-        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" (click)="saveDossier()">Sauvegarder</button>
       </div>
 
     </form>
@@ -50,7 +50,7 @@
         style="margin-top: 2%;  margin-bottom: 2%;" value="ACOMPTE_ENCAISSE">Encaissé</mat-radio-button>
       </mat-radio-group>
       <div style="    float: right;">
-        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;"  (click)="saveDossier()">Sauvegarder</button>
 
       </div>
     </form>
@@ -79,7 +79,7 @@
 
       </mat-radio-group>
       <div style="float: right;">
-        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" (click)="saveDossier()">Sauvegarder</button>
 
       </div>
     </form>
@@ -88,32 +88,32 @@
     <form [formGroup]="thirdFormGroup">
       <mat-radio-group aria-label="Select an option">
         <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
-        [checked]="cmd == 'SAV_ATTENTE_VISITE_TECHNIQUE'" value="SAV_ATTENTE_VISITE_TECHNIQUE">
+        [checked]="sav == 'SAV_ATTENTE_VISITE_TECHNIQUE'" value="SAV_ATTENTE_VISITE_TECHNIQUE">
           Demande prise en compte en attente de visite technique  </mat-radio-button>
         <img src="assets/images/info.png" style="    width: 1.5%;
            margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date de visite !" placement="right">
         <br>
         <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
-        [checked]="cmd == 'SAV_ATTENTE_PROGRAMMATION'" value="SAV_ATTENTE_PROGRAMMATION">En attente de programmation : </mat-radio-button>
-        <input type="text" style="    margin-left: 1%;
+        [checked]="sav == 'SAV_ATTENTE_PROGRAMMATION'" value="SAV_ATTENTE_PROGRAMMATION">En attente de programmation : </mat-radio-button>
+        <input type="text" formControlName="msg" class="form-control" style="    margin-left: 1%; 
     border-color: #e9ecef;
     width: 50%;
-        " [disabled]="role != 'ROLE_ADMIN'">
+        " [disabled]="role != 'ROLE_ADMIN'" >
         <br>
         <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
-        [checked]="cmd == 'SAV_ENCOURS'" value="SAV_ENCOURS">En cours</mat-radio-button>
+        [checked]="sav == 'SAV_ENCOURS'" value="SAV_ENCOURS">En cours</mat-radio-button>
 
         <br>
         <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
-        [checked]="cmd == 'SAV_ATTENTE_REGLEMENT'" value="SAV_ATTENTE_REGLEMENT">Terminé , en attente de réglement</mat-radio-button>
+        [checked]="sav == 'SAV_ATTENTE_REGLEMENT'" value="SAV_ATTENTE_REGLEMENT">Terminé , en attente de réglement</mat-radio-button>
        <br>
         <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"   (change)="radioChangeSAV($event)"
-        [checked]="cmd == 'SAV_ENCAISSE'" value="SAV_ENCAISSE">Terminé , réglement réçu de xxxx,xx <img src="assets/images/euro.png" style="width: 2%;"> 
+        [checked]="sav == 'SAV_ENCAISSE'" value="SAV_ENCAISSE">Terminé , réglement réçu de xxxx,xx <img src="assets/images/euro.png" style="width: 2%;"> 
         </mat-radio-button>
 
       </mat-radio-group>
       <div style="float: right;">
-        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" >Sauvegarder</button>
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;" (click)="saveDossier()">Sauvegarder</button>
 
       </div>
     </form>
