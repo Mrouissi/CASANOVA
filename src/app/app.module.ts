@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { DisponibilityModule } from './disponibility/disponibility.module';
 import { CompteModule } from './compte/compte.module';
-import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { ListComptesModule } from './list-comptes/list-comptes.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +19,7 @@ import { HeaderModule } from './header/header.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    ListComptesComponent,
+    
     
   ],
   imports: [

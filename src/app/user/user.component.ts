@@ -32,6 +32,7 @@ files =[] as any
   categorie: any = "Devis/Commande";
   file : any ;
   @ViewChild('File') File: ElementRef | undefined;
+  dossier: any;
   constructor(private _formBuilder: FormBuilder, private service: UserService) {
 
   }
@@ -50,6 +51,7 @@ files =[] as any
       this.montant = res.dossiers[0].montant_acompte;
       this.dateAcompte = res.dossiers[0].date_commande;
       this.idD =  res.dossiers[0].id;
+      this.dossier = res.dossiers[0];
       for(let i=0 ; i < res.dossiers[0].files.length ; i++){
         let obj = {id:0, name:"", category:"", type:"", data:""}
         obj.id =res.dossiers[0].files[i].id;
@@ -115,7 +117,13 @@ upload(){
   }
 }
 radioChange(e:any){
+  console.log("dossier ==> ", this.dossier);
+  this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
+console.log(data);
+
+  })
 console.log("event", e);
+
 
 }
 radioChangeAcompte(e:any){

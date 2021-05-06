@@ -2,28 +2,47 @@
 width: 100%;">
     <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
 </div>
-<button class="btn btn-success" style="margin-top: 3%; ; float: right;     font-size: revert;">Exporter Excel</button>
+<button class="btn btn-success" style="    margin-top: 1%;
+float: right;
+font-size: revert;
+margin-right: 3%;
+margin-bottom: 4%;">Exporter Excel</button>
 
-<div class="form-group form-inline" style="margin-top: 3%; margin-left: 2%;"> 
-    Rechercher : <input class="form-control ml-2" type="text" name="searchTerm" />
-    <!--<span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>!-->
-</div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <th scope="row">{{user.email}}</th>
-            <td>{{user.nom}}</td>
-            <td>{{user.prenom}}</td>
-            <td><a (click)="Getdetails(user.id)"><img src="../../assets/images/loop.png"
-                        style="width: 21px; height: 21px;"></a></td>
-        </tr>
-    </tbody>
-</table>
+
+
+
+<mat-form-field>
+    <mat-label>Rechercher : </mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Nom">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Prénom">
+      <th mat-header-cell *matHeaderCellDef> Prénom </th>
+      <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> <a (click)="Getdetails(element.id)"><img src="../../assets/images/loop.png"
+        style="width: 21px; height: 21px;"></a> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Pas de données qui correspond à :  "{{input.value}}"</td>
+    </tr>
+  </table>

@@ -9,7 +9,7 @@ import { CommandeService } from './commande.service';
 })
 export class CommandesComponent implements OnInit {
   name: any;
-cmds = []
+cmds : any[] = []
   constructor(private router: Router, private service: CommandeService) { }
 
   ngOnInit(): void {

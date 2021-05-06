@@ -36,4 +36,8 @@ baseURL = "http://localhost:8080/api"
     return this.httpClient.post(this.baseURL + '/dossiers/'+ id + '/upload' ,   formData ,  {  reportProgress: true})
 
   }
+  editCompte(id:number , data : any){
+    return this.httpClient.put( '/api/api/dossiers/'+ id , data ,  { 'headers': this.headers })
+ 
+  }
 }

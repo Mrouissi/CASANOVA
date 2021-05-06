@@ -45,9 +45,9 @@
         </thead>
         <tbody>
             <tr  *ngFor="let cmd of cmds">
-                <th scope="row">{{cmd.etat_dossier}}</th>
-                <td>{{cmd.date_commande}}</td>
-                <td>{{cmd.montant_acompte}}</td>
+                <th scope="row">{{cmd?.etat_dossier}}</th>
+                <td>{{cmd?.date_commande}}</td>
+                <td>{{cmd?.montant_acompte}}</td>
                 <td><a (click)="Getdetails()"><img src="../../assets/images/loop.png"
                     style="width: 21px; height: 21px;"></a></td>
             </tr>
