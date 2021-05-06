@@ -10,7 +10,11 @@ export class ListComptesService {
     'content-type': 'application/json',
     'Access-Control-Allow-Origin': '*'
    })
-  
+   headersE = new HttpHeaders({
+    'content-type': 'application/octet-stream',
+    'Access-Control-Allow-Origin': '*'
+   })
+   
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,5 +22,11 @@ export class ListComptesService {
     return this.httpClient.get(
       "/api/api/users",
       { headers: this.headers })
+  }
+  
+  public export() {
+    return this.httpClient.get(
+      "/api/api/client/export/excel",
+      { headers: this.headersE })
   }
 }

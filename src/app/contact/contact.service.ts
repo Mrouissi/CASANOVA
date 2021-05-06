@@ -20,6 +20,6 @@ export class ContactService {
 
     return this.httpClient.put(
       "/api/contact",
-      {id  , cmt },
+      {'client' : id  , 'message' : cmt },
       { headers: this.headers })
   }}

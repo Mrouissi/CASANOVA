@@ -81,8 +81,7 @@ files =[] as any
   
   }
   cmdChange(e:any){
-    console.log(e);
-    
+    console.log(e); 
   }
 
   handleFileInput(event: any) 
@@ -117,11 +116,11 @@ upload(){
   }
 }
 radioChange(e:any){
+  this.dossier.etat_dossier = e.value;
   console.log("dossier ==> ", this.dossier);
-  this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
-console.log(data);
-
-  })
+ // this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
+//console.log(data);
+ // })
 console.log("event", e);
 
 

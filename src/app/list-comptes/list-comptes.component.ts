@@ -60,6 +60,12 @@ export class ListComptesComponent implements OnInit {
      
     })
   }
+  export(){
+    this.service.export().subscribe(data =>{
+      console.log("export data ==> ", data);
+      
+    })
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
