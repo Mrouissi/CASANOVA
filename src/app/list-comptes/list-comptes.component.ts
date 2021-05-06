@@ -64,6 +64,7 @@ export class ListComptesComponent implements OnInit {
     this.service.export().subscribe(data =>{
       console.log("export data ==> ", data);
       
+      
     })
   }
   applyFilter(event: Event) {

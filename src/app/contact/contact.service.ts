@@ -12,14 +12,17 @@ export class ContactService {
    })
   
 
-   
+  baseURL = "http://localhost:8080/api"
   constructor(private httpClient: HttpClient) { }
 
   public addComment(cmt : string) {
     let id = JSON.parse(localStorage.getItem('idUser') || '')
-
-    return this.httpClient.put(
-      "/api/contact",
-      {'client' : id  , 'message' : cmt },
-      { headers: this.headers })
-  }}
+    const formData= new FormData()
+    formData.append('client', id)
+    formData.append('message', cmt)
+    return this.httpClient.post(
+      this.baseURL+"/contact",
+      formData
+    )
+  }
+}
