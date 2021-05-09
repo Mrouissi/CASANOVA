@@ -31,3 +31,15 @@
     background-color:#9bd06b;
     color: #fff;
 }
+.cmd-radio{
+  margin-top: 2%;  margin-bottom: 2%;
+}
+.cmd-img{
+  width: 1.5%; margin-left: 2%;
+}
+.margin-btn{
+  margin-bottom: 2%;
+}
+.svg{
+  margin-top: 0%; ; float: right;     font-size: revert;
+}

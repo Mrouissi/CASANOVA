@@ -4,17 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class LoginService {
-
   headers = new HttpHeaders({
     'content-type': 'application/json',
     'Access-Control-Allow-Origin': '*'
    })
-  
-
-   
-  constructor(private httpClient: HttpClient) { }
+       constructor(private httpClient: HttpClient) {}
 
   public login(email: string, password: string) {
     return this.httpClient.post(

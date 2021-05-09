@@ -26,11 +26,7 @@ export class ContactComponent implements OnInit {
 
  save(event:any){
 this.service.addComment(this.user.message).subscribe(data=>{
-  console.log(data);
-
 })
-   console.log(event);
-   
  }
 
  

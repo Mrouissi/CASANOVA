@@ -35,6 +35,7 @@ files =[] as any
   dossier: any;
   msg = '';
   sav: any;
+  chantier: any;
   constructor(private _formBuilder: FormBuilder, private service: UserService) {
 
   }
@@ -55,6 +56,7 @@ files =[] as any
       this.sav =res.dossiers[0].etat_sav;
       this.idD =  res.dossiers[0].id;
       this.dossier = res.dossiers[0];
+      this.chantier = res.dossiers[0].chantier.etat_chantier
       this.msg = res.dossiers[0].msg_sav;
       for(let i=0 ; i < res.dossiers[0].files.length ; i++){
         let obj = {id:0, name:"", category:"", type:"", data:""}
@@ -125,18 +127,13 @@ upload(){
 }
 radioChange(e:any){
   this.dossier.etat_dossier = e.value;
-  console.log("dossier ==> ", this.dossier);
- 
-
-
 }
 saveDossier(){
   this.service.editCompte(this.dossier.id , this.dossier).subscribe(data => {
-    //console.log(data);
       })
 }
 radioChangeAcompte(e:any){
-
+   this.dossier.etat_acompte =e.value;
 }
 radioChangeSAV(e:any){
 
@@ -151,7 +148,7 @@ radioChangeSAV(e:any){
 
 }
 radioChangeChantier(e:any){
-
+this.dossier.chantier.etat_chantier = e.value
 }
 
   downloadFile(file:any){
