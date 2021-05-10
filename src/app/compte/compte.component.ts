@@ -10,12 +10,13 @@ import { CompteService } from './compte.service';
 })
 export class CompteComponent implements OnInit {
 user =
- {name: "" , 
+ {nom: "" , 
+ prenom: "",
  adresse :"" , 
  ville:""  , 
- code :"" , 
- portable :"" , 
- fixe :"" , 
+ code_postal :"" , 
+ tel_portable :"" , 
+ tel_fixe :"" , 
  email :"" , 
  civilite :"" , 
  profession :  ""
@@ -35,11 +36,12 @@ user =
       let res = JSON.parse(datas)
     this.user.adresse = res.adresse;
     this.user.civilite = res.civilite;
-    this.user.name = res.nom + ' ' +res.prenom;
+    this.user.nom = res.nom;
+    this.user.prenom = res.prenom;
     this.user.email = res.email;
-    this.user.code = res.code_postal;
-    this.user.portable = res.telPortable;
-    this.user.fixe = res.tel_fixe;
+    this.user.code_postal = res.code_postal;
+    this.user.tel_portable = res.tel_portable;
+    this.user.tel_fixe = res.tel_fixe;
     this.user.profession = res.profession;
     this.user.ville = res.ville ;
     });

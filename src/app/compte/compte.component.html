@@ -1,7 +1,7 @@
 <div style="background-color: #58805a2b;width: 100%;">
 <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
 <div class="btn-group" dropdown container="body" style="margin-left: 69%; margin-top: 0.2%;">
-  <p>{{user.name}}</p> 
+  <p>{{user.prenom}} {{user.nom}}</p> 
  <button id="button-container" dropdownToggle type="button" class="  dropdown-toggle" style="  background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
@@ -37,14 +37,24 @@ font-style: oblique;">
 <form #MyForm="ngForm" class="col-12">
 
   <div class="form-row field">
-     <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="name">Nom et prénom</label>
-     <input type="text" class="form-control col-sm-7" required name="name" id="name" [(ngModel)]="user.name" #name="ngModel"/>
+     <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="name">Nom</label>
+     <input type="text" class="form-control col-sm-7" required name="name" id="name" [(ngModel)]="user.nom" #name="ngModel"/>
      <div *ngIf="!name.valid && name.touched"
           class="alert alert-danger" style="margin-left: 16.5%;
           MARGIN-TOP: 1%;">
        Name is required
      </div>
   </div>
+
+  <div class="form-row field">
+    <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="prenom">Prénom</label>
+    <input type="text" class="form-control col-sm-7" required name="prenom" id="prenom" [(ngModel)]="user.prenom" #prenom="ngModel"/>
+    <div *ngIf="!prenom.valid && prenom.touched"
+         class="alert alert-danger" style="margin-left: 16.5%;
+         MARGIN-TOP: 1%;">
+      Prenom is required
+    </div>
+ </div>
 
   <div class="form-row field">
     <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="adresse">Adresse</label>
@@ -58,7 +68,7 @@ font-style: oblique;">
  
  <div class="form-row field">
   <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="code">Code postal</label>
-  <input type="text" class="form-control col-sm-3" pattern="(09)[0-9 ]{9}" name="code" id="code" [(ngModel)]="user.code" required  #code="ngModel"/>
+  <input type="text" class="form-control col-sm-3" pattern="(09)[0-9 ]{9}" name="code" id="code" [(ngModel)]="user.code_postal" required  #code="ngModel"/>
   <!--<div *ngIf="!code.valid && code.touched"
        class="alert alert-danger" style="margin-left: 16.5%;
        MARGIN-TOP: 1%;">
@@ -83,8 +93,8 @@ This is not a valid code postal !
 </div>
 
 <div class="form-row field">
-  <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="portable">Téléphone portable</label>
-  <input type="text" class="form-control col-sm-3" name="portable" id="portable" [(ngModel)]="user.portable" />
+  <label class="col-sm-2 col-form-label " style="font-weight :bold; " for="tel_portable">Téléphone portable</label>
+  <input type="text" class="form-control col-sm-3" name="tel_portable" id="tel_portable" [(ngModel)]="user.tel_portable" />
   
   <!--required  #portable="ngModel"/>
   <div *ngIf="!portable.valid && portable.touched"
@@ -94,7 +104,7 @@ This is not a valid code postal !
   </div>!-->
 
   <label class="col-sm-2 col-form-label "  for="fixe" style="margin-left: 7%; font-weight :bold;"> Téléphone Fixe</label>
-  <input type="text" class="form-control col-sm-3" name="fixe" id="fice" [(ngModel)]="user.fixe" />
+  <input type="text" class="form-control col-sm-3" name="fixe" id="fice" [(ngModel)]="user.tel_fixe" />
 </div>
 
 <div class="form-row field">
