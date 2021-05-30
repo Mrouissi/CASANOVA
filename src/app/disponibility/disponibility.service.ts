@@ -1,10 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DisponibilityService {
+
+  baseUrl: string = environment.backend.baseURL;
 
   headers = new HttpHeaders({
     'content-type': 'application/json',
@@ -18,8 +21,8 @@ export class DisponibilityService {
   public adddispo(cmd : string) {
     let id = JSON.parse(localStorage.getItem('idUser') || '')
 
-    return this.httpClient.post(
-      "/api/api/clients/"+ id +"/absences",
+    return this.httpClient.post(this.baseUrl+
+      "/api/clients/"+ id +"/absences",
       cmd,
       { headers: this.headers })
   }
