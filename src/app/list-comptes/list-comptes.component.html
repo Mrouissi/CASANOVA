@@ -2,14 +2,6 @@
 width: 100%;">
     <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
 </div>
-<button class="btn btn-success" style="    margin-top: 1%;
-float: right;
-font-size: revert;
-margin-right: 3%;
-margin-bottom: 4%;" (click)="export()">Exporter Excel</button>
-
-
-
 
 <mat-form-field>
     <mat-label>Rechercher : </mat-label>
@@ -46,3 +38,9 @@ margin-bottom: 4%;" (click)="export()">Exporter Excel</button>
       <td class="mat-cell" colspan="4">Pas de données qui correspond à :  "{{input.value}}"</td>
     </tr>
   </table>
+
+  <button class="btn btn-success" style="    margin-top: 1%;
+float: right;
+font-size: revert;
+margin-right: 3%;
+margin-bottom: 4%;" (click)="export()">Exporter Excel</button>

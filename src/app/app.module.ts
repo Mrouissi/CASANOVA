@@ -13,13 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommandeModule } from './commandes/commande.module';
 import { ContactModule } from './contact/contact.module';
 import { HeaderModule } from './header/header.module';
+import { RegisterComponent } from './register/register.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    
+    RegisterComponent   
     
   ],
   imports: [

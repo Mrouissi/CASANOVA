@@ -1,11 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Commercial } from './commercial';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegisterService {
 
   //baseUrl: string = environment.backend.baseURL;
   baseUrl: string = "http://localhost:8080";
@@ -14,12 +14,14 @@ export class LoginService {
     'content-type': 'application/json',
     'Access-Control-Allow-Origin': '*'
    })
-       constructor(private httpClient: HttpClient) {}
 
-  public login(email: string, password: string) {
+  constructor(private httpClient: HttpClient) {}
+
+  public registerCommercial(newCommercial: Commercial) {
+    console.warn(newCommercial);
     return this.httpClient.post(this.baseUrl+
-      "/api/login",
-      {"username":email,"password":password},
+      "/api/register/commercial",
+      newCommercial,
       { headers: this.headers })
   }
 }
