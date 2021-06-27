@@ -1,26 +1,32 @@
-<div class="background" [style.background-image]="'url(assets/images/toiture.jpg)' ">
-</div>
-<div class="wrapper" style="z-index: 1000;transform: translate(0%, -133%);" >
-    <div class="container" >
-        <img src="assets/images/logo.png" 
-         title="Label France Toitures" style="margin-top: -138%; width: 20%;  margin-left: -12%;">
-        <h1 style="margin-top: -71%; color:aliceblue; margin-right: 15%; margin-bottom: 15%; margin-left: 36%;  font-style: italic;">Label France Toitures</h1>
-        <div style=" width: 30%;margin-left: 39%;     margin-top: 30%; ">
+<div>
+    <div class="container-fluid">
+        <div class="row" style="height: 100vh;">
+            <div class="col-md-6 d-flex align-items-center" style="background-color: #9cc922">
+                <div class="ml-5">
+                    <img src="assets/images/logo.png" width="200" class="mb-5" style="margin-top: -120px" alt="Logo LABEL France Toiture">
+                    <h1 class="text-uppercase text-white">bienvenue sur</h1>
+                    <h1 class="text-center text-white font-weight-bold" style="font-size: 2.5em;">LABEL
+                        France Toitures</h1>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div>
+                    <h1 class="mb-0">Connexion</h1>
+                    <h3 class="mt-0 text-secondary">Accédez à la plateforme de gestion des clients</h3>
 
-            <form id="authenticate" action="login" method="post">
-                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required placeholder="Identifiant"
-                    style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Mot de passe"
-                    style="margin-bottom: 5%;" />
-                    
-                    <a [routerLink]="['/register']" [queryParams]="{ role: '1'}"> créer un compte </a>
-                    <br>
-                <button type="submit" class="btn btn-success" style="float: right;" (click)="doLogin()">
-                    Se connecter
-                </button>
-            </form>
+                    <hr><br>
+                    <form id="authenticate" action="login" method="post">
+                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
+                            required placeholder="Identifiant" style="margin-bottom: 5%;" />
+                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+                            required placeholder="Mot de passe" style="margin-bottom: 5%;" />
 
+                        <button type="submit" class="btn btn-success" style="float: right;" (click)="doLogin()">
+                            Se connecter
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

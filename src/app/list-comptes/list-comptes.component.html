@@ -1,46 +1,62 @@
-<div style="background-color: #58805a2b;
-width: 100%;">
-    <img src="assets/images/logo.png" style="width: 10%;     margin-left: 2%;">
-</div>
 
-<mat-form-field>
-    <mat-label>Rechercher : </mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
-  </mat-form-field>
-  
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-    <ng-container matColumnDef="Email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="Nom">
-      <th mat-header-cell *matHeaderCellDef> Nom </th>
-      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="Prénom">
-      <th mat-header-cell *matHeaderCellDef> Prénom </th>
-      <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="Action">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let element"> <a (click)="Getdetails(element.id)"><img src="../../assets/images/loop.png"
-        style="width: 21px; height: 21px;"></a> </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">Pas de données qui correspond à :  "{{input.value}}"</td>
-    </tr>
-  </table>
+            <!-- Main Content -->
+            <div id="content">
 
-  <button class="btn btn-success" style="    margin-top: 1%;
-float: right;
-font-size: revert;
-margin-right: 3%;
-margin-bottom: 4%;" (click)="export()">Exporter Excel</button>
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
+
+                  <!-- Page Heading -->
+                  <h1 class="h3 mb-2 text-gray-800">Liste des clients</h1>
+
+                  <!-- DataTales Example -->
+                  <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary" style="visibility: hidden;"> DataTables Example</h6>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                      <tr>
+                                          <th>Civilité</th>
+                                          <th>Nom</th>
+                                          <th>Prénom</th>
+                                          <th>Ville</th>
+                                          <th>Téléphone</th>
+                                          <th>Email</th>
+                                          <th>Action</th>
+                                      </tr>
+                                  </thead>
+                                  <tfoot>
+                                      <tr>
+                                          <th>Civilité</th>
+                                          <th>Nom</th>
+                                          <th>Prénom</th>
+                                          <th>Ville</th>
+                                          <th>Téléphone</th>
+                                          <th>Email</th>
+                                          <th>Action</th>
+                                      </tr>
+                                  </tfoot>
+                                  <tbody>
+                                      <tr *ngFor="let user of users;">
+                                          <td>{{user.civilite}}</td>
+                                          <td>{{user.nom}}</td>
+                                          <td>{{user.prenom}}</td>
+                                          <td>{{user.ville}}</td>
+                                          <td>{{user.tel_portable}}</td>
+                                          <td>{{user.email}}</td>
+                                          <td><a (click)="Getdetails(user.id)"><img src="../../assets/images/loop.png"
+                                              style="width: 21px; height: 21px;"></a> </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.container-fluid -->
+
+          </div>
+          <!-- End of Main Content -->

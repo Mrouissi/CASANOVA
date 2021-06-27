@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommandeModule } from './commandes/commande.module';
 import { ContactModule } from './contact/contact.module';
-import { HeaderModule } from './header/header.module';
 import { RegisterComponent } from './register/register.component';
 
 
@@ -21,7 +20,7 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent   
+    RegisterComponent
     
   ],
   imports: [
@@ -35,9 +34,7 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     ListComptesModule,
     CommandeModule,
-    ContactModule,
-    HeaderModule
- 
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent],

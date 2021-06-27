@@ -11,13 +11,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {MatRadioModule} from '@angular/material/radio';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {MatIconModule} from '@angular/material/icon';
-import { HeaderComponent } from '../header/header.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 
 @NgModule({
-  declarations: [UserComponent , HeaderComponent],
+  declarations: [UserComponent ],
   imports: [
     MatStepperModule,
     MatInputModule,

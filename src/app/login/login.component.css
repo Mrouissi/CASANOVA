@@ -3,10 +3,23 @@
     background-color: #8cb53bc4;
     border-color: #8cb53bc4;
 }
+
 .background {
     background-size: cover;
     background-position: center center;
-filter: blur(4px);
+    filter: blur(4px);
     background-repeat: no-repeat;
     height: 97.5%;
-  }
+}
+
+.btn-success {
+    border-color: transparent;
+}
+
+.btn-success:hover {
+    background-color: #94c11c;
+}
+
+footer {
+    visibility: hidden !important;
+}

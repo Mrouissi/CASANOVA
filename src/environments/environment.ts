@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   backend: {
-    baseURL:"http://host.docker.internal:8080"
+    //baseURL:"http://host.docker.internal:8080"
+    baseURL:"http://localhost:8080"
   }
 };
 
