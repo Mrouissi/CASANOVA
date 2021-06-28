@@ -39,14 +39,14 @@
                                       </tr>
                                   </tfoot>
                                   <tbody>
-                                      <tr *ngFor="let user of users;">
-                                          <td>{{user.civilite}}</td>
-                                          <td>{{user.nom}}</td>
-                                          <td>{{user.prenom}}</td>
-                                          <td>{{user.ville}}</td>
-                                          <td>{{user.tel_portable}}</td>
-                                          <td>{{user.email}}</td>
-                                          <td><a (click)="Getdetails(user.id)"><img src="../../assets/images/loop.png"
+                                      <tr *ngFor="let client of clients;">
+                                          <td>{{client.civilite}}</td>
+                                          <td>{{client.nom}}</td>
+                                          <td>{{client.prenom}}</td>
+                                          <td>{{client.ville}}</td>
+                                          <td>{{client.tel_portable}}</td>
+                                          <td>{{client.email}}</td>
+                                          <td><a (click)="Getdetails(client.id)"><img src="../../assets/images/loop.png"
                                               style="width: 21px; height: 21px;"></a> </td>
                                       </tr>
                                   </tbody>

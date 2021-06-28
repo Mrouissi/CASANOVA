@@ -10,25 +10,13 @@
                     style="margin-bottom: 5%;" />
                 <input type="text" *ngIf="isCommercial" class="form-control" id="telephone" name="telephone" [(ngModel)]="telephone" required placeholder="Téléphone"
                     style="margin-bottom: 5%;" />
-                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="Identifiant"
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="E-mail"
                     style="margin-bottom: 5%;" />
                 <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Mot de passe"
                     style="margin-bottom: 5%;" />
                 <input type="password" class="form-control" id="cpassword" name="cpassword" [(ngModel)]="cpassword" required placeholder=" Confirmer le mot de passe"
                     style="margin-bottom: 5%;" />
-
-                <select class="form-control" style="margin-bottom: 5%;" *ngIf="isCommercial" name="rules">
-                        <option *ngFor="let rule of commercial">
-                          {{rule.name}}
-                        </option>
-                </select>
-
-                <select class="form-control" style="margin-bottom: 5%;" *ngIf="!isCommercial" name="rules">
-                    <option *ngFor="let rule of client">
-                      {{rule.name}}
-                    </option>
-                </select>
-
+                <br>
                 <button type="submit" class="btn btn-success" style="float: right;" (click)="doRegister()">
                     Enregistrer
                 </button>

@@ -9,39 +9,23 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegistryComponent } from './registry/registry.component';
 import { UserComponent } from './user/user.component';
+import { ListComComponent } from './list-com/list-com.component';
+import { ListAdminComponent } from './list-admin/list-admin.component';
 
 const routes: Routes = [
-  {
-    path: 'registry', component: RegistryComponent
-  },
-  {
-    path: 'compte', component: CompteComponent
-  },
-  {
-    path: 'contact', component: ContactComponent
-  },
-  {
-    path: 'cmd', component: CommandesComponent
-  },
-  {
-    path: 'dispo', component: DisponibilityComponent
-  },
-  {
-    path: 'user', component: UserComponent
-  },
-  {
-    path: 'list', component: ListComptesComponent
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-
-  {
-    path: 'register', component: RegisterComponent
-  },
-
+  {path:'admins', component: ListAdminComponent},
+  {path: 'commercials', component: ListComComponent},
+  {path: 'registry', component: RegistryComponent},
+  {path: 'compte', component: CompteComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'cmd', component: CommandesComponent},
+  {path: 'dispo', component: DisponibilityComponent},
+  {path: 'user', component: UserComponent},
+  {path: 'list', component: ListComptesComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   
-  { path: '', redirectTo: 'login', pathMatch: 'full'  },
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({

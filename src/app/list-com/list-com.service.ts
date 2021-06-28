@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ListComptesService {
+export class ListComService {
 
   baseUrl: string = environment.backend.baseURL;
 
@@ -21,15 +21,10 @@ export class ListComptesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getListOfClients() {
+  public getListOfCom() {
     return this.httpClient.get(this.baseUrl+
-      "/api/clients",
+      "/api/commercials",
       { headers: this.headers })
   }
   
-  public export() {
-    return this.httpClient.get(this.baseUrl+
-      "/api/client/export/excel",
-      { headers: this.headersE })
-  }
 }

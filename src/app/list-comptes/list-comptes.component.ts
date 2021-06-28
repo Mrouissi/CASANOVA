@@ -10,30 +10,38 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./list-comptes.component.css']
 })
 export class ListComptesComponent implements OnInit {
-  users = [{
-    'email': "",
-    'id': 0,
-    'nom': "",
-    'password': "",
-    'prenom': "",
-    'role': "",
-    'tel_portable': "",
-    'ville': "",
-    'civilite': ""
+  
+  clients = [{
+    "id": 0,
+    "email": "",
+    "password": "",
+    "nom": "",
+    "prenom": "",
+    "role": "",
+    "isEnabled": true,
+    "civilite": "",
+    "ville": "",
+    "code_postal": "",
+    "dpt": "",
+    "adresse": "",
+    "tel_fixe": "",
+    "tel_portable": "",
+    "dossiers": [],
+    "periodes_abs": []
    }];
- displayedColumns: string[] = ['Email', 'Nom', 'Prénom', 'Action'];
- dataSource = new MatTableDataSource(this.users);
+   
+ dataSource = new MatTableDataSource(this.clients);
 
 
   constructor(private router: Router , private service: ListComptesService) { }
 
   ngOnInit(): void {
-    this.service.getListOfUsers().subscribe(data => {
-      console.log('useers ===> ' , data);
+    this.service.getListOfClients().subscribe(data => {
+      console.log('clients ===> ' , data);
       let datas = JSON.stringify(data)
       let res = JSON.parse(datas)
       
-      this.users = res
+      this.clients = res
       const row = this.dataSource.data;
      row.splice(0,1)
       for(let i=0 ; i < res.length ; i++){
@@ -58,7 +66,6 @@ console.log('id ====>',e);
 
 localStorage.setItem('idUser', e);
 this.router.navigate(['user']);  
-
 
   }
 }

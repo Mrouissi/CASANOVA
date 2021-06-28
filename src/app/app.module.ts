@@ -13,14 +13,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommandeModule } from './commandes/commande.module';
 import { ContactModule } from './contact/contact.module';
 import { RegisterComponent } from './register/register.component';
-
+import { ListComComponent } from './list-com/list-com.component';
+import { ListAdminComponent } from './list-admin/list-admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListComComponent,
+    ListAdminComponent
     
   ],
   imports: [
