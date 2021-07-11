@@ -8,13 +8,13 @@
 
         <mat-radio-button [disabled]="role != 'ROLE_ADMIN'" (change)="radioChange($event)"
           [checked]="cmd == 'COMMANDE_RECU'" class="cmd-radio" value="COMMANDE_RECU">
-          Reçue ( En cours d'enregistrement)</mat-radio-button>
+          Reçue (En cours d'enregistrement)</mat-radio-button>
 
         <img src="assets/images/info.png" class="cmd-img"
-        tooltip="En attente de validation technique par le bureau d'études !" placement="right">
+        tooltip="En attente de validation technique par le bureau d'études !" placement="right" style="margin-left: -0.1%;">
 
         <mat-radio-button class="margin-btn" [disabled]="role != 'ROLE_ADMIN'" (change)="radioChange($event)"
-          [checked]="cmd == 'COMMANDE_ATTENTE'" value="COMMANDE_ATTENTE">En attente</mat-radio-button>
+          [checked]="cmd == 'COMMANDE_ATTENTE'" value="COMMANDE_ATTENTE" style="margin-right: 2%; margin-left: 2%;">En attente</mat-radio-button>
 
         <mat-radio-button class="margin-btn" [disabled]="role != 'ROLE_ADMIN'" (change)="radioChange($event)"
           [checked]="cmd == 'COMMANDE_ENREGISTREE'" value="COMMANDE_ENREGISTREE">Enregistrée</mat-radio-button>
@@ -48,10 +48,9 @@
           [checked]="acompte == 'ACOMPTE_ENCAISSE'" style="margin-top: 2%;  margin-bottom: 2%;"
           value="ACOMPTE_ENCAISSE">Encaissé</mat-radio-button>
       </mat-radio-group>
-      <div style="    float: right;">
-        <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;"
+      <div style=" margin-top: 7%;   float: right;">
+        <button class="btn btn-success" style="margin-top: 2%; float: right; font-size: revert;"
           (click)="saveDossier()">Sauvegarder</button>
-
       </div>
     </form>
   </mat-step>
@@ -81,7 +80,7 @@
         </mat-radio-button>
 
       </mat-radio-group>
-      <div style="float: right;">
+      <div style="margin-top: 7%; float: right;">
         <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;"
           (click)="saveDossier()">Sauvegarder</button>
 
@@ -94,14 +93,14 @@
         <mat-radio-button style="      margin-top: 2%;  margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"
           (change)="radioChangeSAV($event)" [checked]="sav == 'SAV_ATTENTE_VISITE_TECHNIQUE'"
           value="SAV_ATTENTE_VISITE_TECHNIQUE">
-          Demande prise en compte en attente de visite technique </mat-radio-button>
+          Demande prise en compte </mat-radio-button>
         <img src="assets/images/info.png" style="    width: 1.5%;
-           margin-left: 2%;" tooltip="Vous allez etre contacté pour fixer une date de visite !" placement="right">
+           margin-left: 2%;" tooltip="Vous allez être contacté pour fixer une date !" placement="right">
         <br>
-        <mat-radio-button style="    margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"
+        <mat-radio-button style="margin-bottom: 2%;" [disabled]="role != 'ROLE_ADMIN'"
           (change)="radioChangeSAV($event)" [checked]="sav == 'SAV_ATTENTE_PROGRAMMATION'"
-          value="SAV_ATTENTE_PROGRAMMATION">En attente de programmation : </mat-radio-button>
-        <input type="text" formControlName="msg" class="form-control" style="    margin-left: 1%; 
+          value="SAV_ATTENTE_PROGRAMMATION">En attente de programmation ou de visite technique : </mat-radio-button>
+        <input type="text" formControlName="msg" class="form-control" style="margin-left: 1%; 
     border-color: #e9ecef;
     width: 50%;
         " [disabled]="role != 'ROLE_ADMIN'">
@@ -121,31 +120,37 @@
         </mat-radio-button>
 
       </mat-radio-group>
-      <div style="float: right;">
+      <div style="margin-top: 7%; float: right;">
         <button class="btn btn-success" style="margin-top: 0%; ; float: right;     font-size: revert;"
           (click)="saveDossier()">Sauvegarder</button>
-
       </div>
     </form>
   </mat-step>
+
   <mat-step [stepControl]="secondFormGroup" label="vos documents ">
     <form [formGroup]="secondFormGroup">
-      <p>Type de documents</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <select matNativeControl required (change)="selectChange($event)">
-          <option value="Devis/Commande">Devis/Commande</option>
-          <option value="Facture">Facture</option>
-          <option value="Divers">Divers</option>
-          <option value="Photos">Photos</option>
-        </select>
-      </mat-form-field>
-      <div class="form-group" style="margin-left: 30%;">
-        <label for="file">Choisir un fichier</label>
+      <p>Type de documents: </p>
+      <div style="margin-top: 4%;">
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <select matNativeControl required (change)="selectChange($event)">
+            <option value="Devis/Commande">Devis/Commande</option>
+            <option value="Facture">Facture</option>
+            <option value="Divers">Divers</option>
+            <option value="Photos">Photos</option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <p>Choisir un fichier: </p>
+      <div class="form-group" style="float: left; margin-top: 1%; margin-left: 15%;">
         <input type="file" id="file" name="file" #file (change)="handleFileInput($event)">
       </div>
-      <button class="btn btn-success" style="margin-top: 0%; ; float: right; margin-bottom: 2%;     font-size: revert;"
-        (click)="upload()">Sauvegarder</button>
+
+      <div style="margin-top: 7%;">
+        <button class="btn btn-success" style="margin-top: 0%; ; float: right; margin-bottom: 2%;     font-size: revert;"
+          (click)="upload()">Sauvegarder</button>
+      </div>
 
       <table class="table table-striped">
         <thead>

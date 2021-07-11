@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { DisponibilityModule } from './disponibility/disponibility.module';
 import { CompteModule } from './compte/compte.module';
-import { ListComptesModule } from './list-comptes/list-comptes.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommandeModule } from './commandes/commande.module';
@@ -15,7 +14,8 @@ import { ContactModule } from './contact/contact.module';
 import { RegisterComponent } from './register/register.component';
 import { ListComComponent } from './list-com/list-com.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
-
+import { ListComptesComponent } from './list-comptes/list-comptes.component';
+import { FilterSearchPipe } from './filter-search.pipe';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,9 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
     LoginComponent,
     RegisterComponent,
     ListComComponent,
-    ListAdminComponent
-    
+    ListAdminComponent,
+    ListComptesComponent,
+    FilterSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,6 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
     CompteModule,
     FormsModule,
     HttpClientModule,
-    ListComptesModule,
     CommandeModule,
     ContactModule
   ],

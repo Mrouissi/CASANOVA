@@ -20,7 +20,7 @@ compte = {
   'selected' : true
 }
   fileToUpload: any ;
-id = '';
+id = "";
 role = '';
 cmd = '';
 acompte ='';
@@ -118,9 +118,10 @@ console.log(event);
 
 }
 upload(){
+  console.log('begin upload')
   if(this.fileToUpload.files.length > 0) {
-  
-    this.service.uploadFile(this.idD ,  this.fileToUpload.files[0] , this.categorie ).subscribe(data => {
+    console.log('file found')
+    this.service.uploadFile(parseInt(this.id) ,  this.fileToUpload.files[0] , this.categorie ).subscribe(data => {
 
     })
   }

@@ -9,6 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './list-comptes.component.html',
   styleUrls: ['./list-comptes.component.css']
 })
+
 export class ListComptesComponent implements OnInit {
   
   clients = [{
@@ -32,10 +33,12 @@ export class ListComptesComponent implements OnInit {
    
  dataSource = new MatTableDataSource(this.clients);
 
+ searchClient="";
 
-  constructor(private router: Router , private service: ListComptesService) { }
+  constructor(private router: Router , private service: ListComptesService) {}
 
   ngOnInit(): void {
+    
     this.service.getListOfClients().subscribe(data => {
       console.log('clients ===> ' , data);
       let datas = JSON.stringify(data)
@@ -43,29 +46,22 @@ export class ListComptesComponent implements OnInit {
       
       this.clients = res
       const row = this.dataSource.data;
-     row.splice(0,1)
-      for(let i=0 ; i < res.length ; i++){
-        
+      row.splice(0,1)
+      for(let i=0 ; i < res.length ; i++){ 
         row.push(res[i]);
         this.dataSource.data = row;
-      }
-     
+      } 
     })
   }
+
   export(){
     this.service.export().subscribe(data =>{})
     window.open("http://localhost:8080/api/client/export/excel");
 
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
   Getdetails(e:any){
-console.log('id ====>',e);
-
-localStorage.setItem('idUser', e);
-this.router.navigate(['user']);  
-
+      console.log('id ====>',e);
+      localStorage.setItem('idUser', e);
+      this.router.navigate(['user']);  
   }
 }

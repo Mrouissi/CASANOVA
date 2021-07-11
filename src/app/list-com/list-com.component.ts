@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { ListComService } from './list-com.service';
 
 @Component({
@@ -10,18 +11,19 @@ import { ListComService } from './list-com.service';
 })
 export class ListComComponent implements OnInit {
   commercials = [{
-    'email': "",
     'id': 0,
+    'email': "",
     'nom': "",
     'password': "",
     'prenom': "",
     'role': "",
     'tel_portable': "",
     'ville': "",
-    'civilite': ""
+    'agence': ""
    }];
 
   dataSource = new MatTableDataSource(this.commercials);
+  searchCom=''
 
   constructor(private router: Router , private service: ListComService) { }
 
@@ -43,4 +45,15 @@ export class ListComComponent implements OnInit {
      
     })
   }
+
+  deleteCom(id: number){
+
+    if (confirm("Voulez-vous supprimer le commercial " + id + "?")){
+      this.service.delete(id).subscribe((res) => {
+        console.log(res);
+        this.commercials = this.commercials.filter(x => x.id !== id);
+      });
+    }
+  }
+
 }

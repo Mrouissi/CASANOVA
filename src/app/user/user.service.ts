@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,21 @@ export class UserService {
    })
  
 baseURL = "http://localhost:8080/api"
+
   constructor(private httpClient : HttpClient) { }
+
+  getClientBoard(): Observable<any> {
+    return this.httpClient.get(this.baseURL + 'client', { 'headers': this.headers });
+  }
+
+  getCommercialBoard(): Observable<any> {
+
+    return this.httpClient.get(this.baseURL + 'commercial', { 'headers': this.headers });
+  }
+
+  getAdminBoard(): Observable<any> {
+    return this.httpClient.get(this.baseURL + 'admin', { 'headers': this.headers });
+  }
  
   getCompte(id:number){
     return this.httpClient.get(this.baseURL + '/clients/'+ id , { 'headers': this.headers })
@@ -36,10 +51,10 @@ baseURL = "http://localhost:8080/api"
     return this.httpClient.post(this.baseURL + '/dossiers/'+ id + '/upload' ,   formData ,  {  reportProgress: true})
 
   }
+
   editCompte(id:number , data : any){
    let idc = JSON.parse(localStorage.getItem('idUser') || '')
 
-    return this.httpClient.put( this.baseURL+'/dossiers/'+ id +'/'+ idc, data ,  { 'headers': this.headers })
- 
+    return this.httpClient.put(this.baseURL+'/dossiers/'+ id +'/'+ idc, data ,  { 'headers': this.headers })
   }
 }

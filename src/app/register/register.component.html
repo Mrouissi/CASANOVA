@@ -12,6 +12,8 @@
                     style="margin-bottom: 5%;" />
                 <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="E-mail"
                     style="margin-bottom: 5%;" />
+                <input type="text" *ngIf="isCommercial"class="form-control" id="agence" name="agence" [(ngModel)]="agence" required placeholder="Nom de l'agence"
+                    style="margin-bottom: 5%;" />
                 <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Mot de passe"
                     style="margin-bottom: 5%;" />
                 <input type="password" class="form-control" id="cpassword" name="cpassword" [(ngModel)]="cpassword" required placeholder=" Confirmer le mot de passe"

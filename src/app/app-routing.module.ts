@@ -15,13 +15,13 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
 const routes: Routes = [
   {path:'admins', component: ListAdminComponent},
   {path: 'commercials', component: ListComComponent},
-  {path: 'registry', component: RegistryComponent},
+  {path: 'commercial', component: RegistryComponent},
   {path: 'compte', component: CompteComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'cmd', component: CommandesComponent},
   {path: 'dispo', component: DisponibilityComponent},
-  {path: 'user', component: UserComponent},
-  {path: 'list', component: ListComptesComponent},
+  {path: 'client', component: UserComponent},
+  {path: 'admin', component: ListComptesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   

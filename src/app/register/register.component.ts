@@ -24,9 +24,12 @@ export class RegisterComponent implements OnInit {
   prenom!:string;
   nom!:string;
   cpassword!:string;
+  id!:number;
+  agence!:string;
   
   commercial: Roles[] = [];
   client : Roles[] = [];
+
   
   // Components variables
   isCommercial!: boolean;
@@ -87,7 +90,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.email);
 
       // Create object of class Commercial
-      var newCommercial = new Commercial(this.email, this.password);
+      var newCommercial = new Commercial(this.email, this.password, this.id);
       console.warn(newCommercial);
 
       // Send request to API
