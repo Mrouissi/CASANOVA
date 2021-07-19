@@ -1,27 +1,24 @@
 <form id="authenticate" action="register" method="post">
-        
+
     <div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
     <h1 *ngIf="!isCommercial"> Création de compte</h1>
     <h1 *ngIf="isCommercial"> Enregistrement d'un commercial</h1>
     <hr>
-                <input type="text" *ngIf="isCommercial" class="form-control" id="nom" name="nom" [(ngModel)]="nom" required placeholder="Nom"
+                <input type="text" *ngIf="isCommercial" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required placeholder="Nom"
                     style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" class="form-control" id="prenom" name="prenom" [(ngModel)]="prenom" required placeholder="Prénom"
+                <input type="text" *ngIf="isCommercial" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required placeholder="Prénom"
                     style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" class="form-control" id="telephone" name="telephone" [(ngModel)]="telephone" required placeholder="Téléphone"
+                <input type="text" *ngIf="isCommercial" class="form-control" id="telephone" name="telephone" [(ngModel)]="form.tel_portable" required placeholder="Téléphone"
                     style="margin-bottom: 5%;" />
-                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="E-mail"
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="form.email" required placeholder="E-mail"
                     style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial"class="form-control" id="agence" name="agence" [(ngModel)]="agence" required placeholder="Nom de l'agence"
+                <input type="text" *ngIf="isCommercial"class="form-control" id="agence" name="agence" [(ngModel)]="form.agence" required placeholder="Nom de l'agence"
                     style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Mot de passe"
-                    style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" id="cpassword" name="cpassword" [(ngModel)]="cpassword" required placeholder=" Confirmer le mot de passe"
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required placeholder="Mot de passe"
                     style="margin-bottom: 5%;" />
                 <br>
-                <button type="submit" class="btn btn-success" style="float: right;" (click)="doRegister()">
+                <button type="submit" *ngIf="isCommercial" class="btn btn-success" style="float: right;" (click)="doCommercialRegister()">
                     Enregistrer
                 </button>
-
         </div>
 </form>

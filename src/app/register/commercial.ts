@@ -1,6 +1,9 @@
 export class Commercial {
-
-    constructor(public email:string, public password:string, public id:number) {
-
-    }
+    constructor(public agence: string,
+                public nom: string,
+                public prenom: string,
+                public tel_portable: string,
+                public role: string,
+                public password: string,
+                public email: string) {}
 }

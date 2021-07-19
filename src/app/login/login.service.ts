@@ -18,8 +18,7 @@ export class LoginService {
        constructor(private httpClient: HttpClient) {}
 
   public login(email: string, password: string): Observable<any> {
-    console.log('email1', email)
-    console.log('pass1', password)
+
     return this.httpClient.post(this.baseUrl+
       "/api/login",
       {"email":email,"password":password},

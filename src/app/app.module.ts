@@ -16,6 +16,8 @@ import { ListComComponent } from './list-com/list-com.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { FilterSearchPipe } from './filter-search.pipe';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { FilterSearchPipe } from './filter-search.pipe';
     ListComComponent,
     ListAdminComponent,
     ListComptesComponent,
-    FilterSearchPipe
+    FilterSearchPipe,
+    RegisterAdminComponent
   ],
   imports: [
     BrowserModule,

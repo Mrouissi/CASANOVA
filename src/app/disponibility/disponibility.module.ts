@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [  
-    MatDatepickerModule,  
+    MatDatepickerModule
   ],
 })
 export class DisponibilityModule { }

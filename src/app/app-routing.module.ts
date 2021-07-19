@@ -11,9 +11,10 @@ import { RegistryComponent } from './registry/registry.component';
 import { UserComponent } from './user/user.component';
 import { ListComComponent } from './list-com/list-com.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
+import {RegisterAdminComponent} from './register-admin/register-admin.component';
 
 const routes: Routes = [
-  {path:'admins', component: ListAdminComponent},
+  {path: 'admins', component: ListAdminComponent},
   {path: 'commercials', component: ListComComponent},
   {path: 'commercial', component: RegistryComponent},
   {path: 'compte', component: CompteComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'admin', component: ListComptesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  
+  {path: 'registeradmin', component: RegisterAdminComponent},
+
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 

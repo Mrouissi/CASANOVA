@@ -17,9 +17,9 @@
 
                     <hr><br>
                     <form id="authenticate" action="login" method="post">
-                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
+                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="form.email"
                             required placeholder="Identifiant" style="margin-bottom: 5%;" />
-                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password"
                             required placeholder="Mot de passe" style="margin-bottom: 5%;" />
                         <br>
                         <button type="submit" class="btn btn-success" style="float: right;" (click)="doLogin()">

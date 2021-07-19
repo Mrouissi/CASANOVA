@@ -1,0 +1,21 @@
+<form id="authenticate" action="register" method="post">
+
+  <div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
+    <h1> Enregistrement d'un Administrateur </h1>
+    <hr>
+    <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required placeholder="Nom"
+           style="margin-bottom: 5%;" />
+    <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required placeholder="Prénom"
+           style="margin-bottom: 5%;" />
+    <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="form.tel_portable" required placeholder="Téléphone"
+           style="margin-bottom: 5%;" />
+    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="form.email" required placeholder="E-mail"
+           style="margin-bottom: 5%;" />
+    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required placeholder="Mot de passe"
+           style="margin-bottom: 5%;" />
+    <br>
+    <button type="submit"  class="btn btn-success" style="float: right;" (click)="doAdminRegister()">
+      Enregistrer
+    </button>
+  </div>
+</form>

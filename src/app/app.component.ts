@@ -27,23 +27,20 @@ export class AppComponent implements OnInit{
    }];
 
   dataSource = new MatTableDataSource(this.user);
-  roles ={"name":''};
-  role='';
+  roles = {'name': ''};
+  role = '';
   userData = {
     roles:[],
     "nom": '',
     "prenom":'',
   }
 
-
   ngOnInit(){
-    
+
     this.userData = JSON.parse(localStorage.getItem('user') || '');
-    this.roles= this.userData.roles[0];
-    this.role = this.roles.name
+    this.roles = this.userData.roles[0];
+    this.role = this.roles.name;
   }
-
-
 
   title = 'casanova';
 

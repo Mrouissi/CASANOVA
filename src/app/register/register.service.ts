@@ -8,21 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  //baseUrl: string = environment.backend.baseURL;
-  baseUrl: string = "http://localhost:8080/API";
+  // baseUrl: string = environment.backend.baseURL;
+  baseUrl = 'http://localhost:8080/api/';
 
   headers = new HttpHeaders({
     'content-type': 'application/json',
     'Access-Control-Allow-Origin': '*'
-   })
+   });
 
   constructor(private httpClient: HttpClient) {}
+  registerCommercial(newCommercial: Commercial): Observable<any> {
+    return this.httpClient.post(this.baseUrl + 'commercials', {
+      nom: newCommercial.nom,
+      prenom: newCommercial.prenom,
+      tel_portable: newCommercial.tel_portable,
+      password: newCommercial.password,
+      email: newCommercial.email,
+      agence: newCommercial.agence
+    }, {headers: this.headers });
 
-  public registerCommercial(newCommercial: Commercial): Observable<any> {
-    console.warn(newCommercial);
-    return this.httpClient.post(this.baseUrl+
-      "register/commercial",
-      newCommercial,
-      { headers: this.headers })
+    console.warn('un seul mot' + newCommercial);
   }
 }
+
