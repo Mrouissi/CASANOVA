@@ -10,6 +10,8 @@ import { ClientCommandeService } from './client-commande.service';
 })
 export class ClientCommandeComponent implements OnInit {
   select: any;
+  vente: any;
+
   agences =  [{'id': 0, 'nom': "" }];
   dataSource = new MatTableDataSource(this.agences);
 
@@ -31,9 +33,13 @@ export class ClientCommandeComponent implements OnInit {
   supports= [{'id': 0, 'nom': "" }];
   supportSource = new MatTableDataSource(this.supports);
 
+  commercials = [{'id': 0,'email': "",'nom': "",'password': "",'prenom': "",'role': "",'tel_portable': "",'ville': "",'agence': ""}];
+  commercialsSource = new MatTableDataSource(this.commercials);
+
   reglementMode = [
     {value : 'Comptant', name : 'Comptant'},
     {value : 'Financement', name : 'Financement'}] ;
+  
 
   constructor(private router: Router, private service : ClientCommandeService) { }
 
@@ -132,10 +138,32 @@ export class ClientCommandeComponent implements OnInit {
       }
     })
 
+    this.service.getListOfCom().subscribe(data => {
+      console.log('commercials ===> ' , data);
+      let datas = JSON.stringify(data)
+      let res = JSON.parse(datas)
+      
+      this.commercials = res
+      const row = this.commercialsSource.data;
+     row.splice(0,1)
+      for(let i=0 ; i < res.length ; i++){
+        
+        row.push(res[i]);
+        this.commercialsSource.data = row;
+      }
+     
+    })
+
   }
 
-   onItemChange(selectedValue: any){
-    return this.select = selectedValue.target.value;
+  onItemChange(selectedValue: any){
+  return this.select = selectedValue.target.value;
   }
+
+ loadcomptravaux(selected : any){
+  return this.vente = selected.target.value,
+  console.log('toto', this.vente)
+  ;
+ }
 
 }

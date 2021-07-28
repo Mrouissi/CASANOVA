@@ -3,28 +3,18 @@
  <fieldset class="border border-dark p-2">
    <legend class="w-auto"> Identité Tech Conseil </legend>
    <div>
-     <input type="text" required placeholder="Code vendeur" style="margin-bottom:2%;"/>
+     <input type="text" required placeholder="Vendeur Principal" style="margin-bottom:2%;"/>
+     <input type="number" required placeholder="Pourcentage " style="margin-bottom: 1%;"/>
      <select style="margin-left: 2%;" >
        <option value="">--Tech Conseil 1 Associé --</option>
-       <option value="tech1">tech 1</option>
-       <option value="tech 1">Tech 2</option>
-       <option value=" tech 3">Tech 3</option>
+       <option *ngFor = 'let com of commercials'>{{com.nom}} {{com.prenom}}</option>
      </select>
      <input type="number" required placeholder="Pourcentage tech 1" style="margin-bottom: 1%;"/>
      <select style="margin-left: 2%;" >
        <option value="">--Tech Conseil 2 Associé --</option>
-       <option value="tech1">tech 1</option>
-       <option value="tech 1">Tech 2</option>
-       <option value=" tech 3">Tech 3</option>
+       <option *ngFor = 'let com of commercials'>{{com.nom}} {{com.prenom}}</option>
      </select>
      <input type="number" required placeholder="Pourcentage tech 2" style= "margin-bottom: 1%;"/>
-     <select style="margin-left: 2%;" >
-       <option value="">--Tech Conseil 3 Associé--</option>
-       <option value="tech1">tech 1</option>
-       <option value="tech 1">Tech 2</option>
-       <option value=" tech 3">Tech 3</option>
-     </select>
-     <input type="number" required placeholder="Pourcentage tech 3" style="margin-bottom: 1%;"/>
    </div>
  </fieldset>
  <br>
@@ -54,7 +44,6 @@
   </div>
  </fieldset>
  <br>
-
   <fieldset class="border border-dark p-2">
     <legend class="w-auto"> Coordonnées Client</legend>
   <div  class="form-row  ml-auto mr-auto">
@@ -97,8 +86,8 @@
      <legend class="w-auto"> Information Chantier </legend>
      <div  class="form-row  ml-auto mr-auto">
      <div class="form-group col-md-3">
-       <select style="margin-left: 2% ">
-         <option value="">--Type de Travaux--</option> 
+       <select (change)="loadcomptravaux($event)" style="margin-left: 2% ">
+         <option [ngValue]="">--Type de Travaux--</option> 
          <option *ngFor = 'let travaux of typeTravaux'>{{travaux.nom}}</option>
        </select>
      </div>
@@ -121,7 +110,6 @@
          </select>
        </div>
        <br>
-
      <div class="form-group col-md-2">
        <label for="métré"> Métré <span>*</span> </label>
        <input type="number" class="form-control" id="métré" name="métré" required placeholder="Métré"/>
@@ -150,15 +138,78 @@
        <label for="Total TTC"> Prix Total TTC </label>
        <input type="number" class="form-control" id="Total TTC" name="Total TTC" required placeholder="Prix Total TTC"/>
      </div>
-       <div class="form-group col-md-3">
-         <select (change)="onItemChange($event)" style="margin-left: 2% ">
-           <option name="">-- Mode de règlement --</option>
-           <option *ngFor = 'let mode of reglementMode ' [value]='mode.value'>{{mode.name}}</option>
-         </select>
-       </div>
 
      </div>
    </fieldset>
+   <br>
+   <fieldset class="border border-dark p-2" *ngIf="vente != '--Type de Travaux--'">
+    <legend class="w-auto"> Travaux Complémentaires </legend>
+    <div  class="form-row  ml-auto mr-auto">
+      <div class="form-group col-md-3">
+        <select style="margin-left: 2% ">
+          <option value="">--Type de Travaux--</option> 
+          <option *ngFor = 'let travaux of typeTravaux'>{{travaux.nom}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <select style="margin-left: 2% ">
+          <option value="">--Elément à rénover--</option>
+          <option *ngFor = 'let el of elements'>{{el.nom}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <select style="margin-left: 2% ">
+          <option value="">-- Prestation à réaliser --</option>
+          <option *ngFor = 'let presta of prestations'>{{presta.nom}}</option>
+        </select>
+      </div>
+        <div class="form-group col-md-3">
+          <select style="margin-left: 2% ">
+            <option value="">-- Support existant --</option>
+            <option *ngFor = 'let sup of supports'>{{sup.nom}}</option>
+          </select>
+        </div>
+        <br>
+ 
+      <div class="form-group col-md-2">
+        <label for="métré"> Métré <span>*</span> </label>
+        <input type="number" class="form-control" id="métré" name="métré" required placeholder="Métré"/>
+      </div>
+        <div class="form-group col-md-2">
+          <label for="remise métré"> Remise sur métré <span>*</span> </label>
+          <input type="number" class="form-control" id="remise métré" name=" resmise métré" required placeholder="Remise sur métré"/>
+        </div>
+ 
+      <div class="form-group col-md-2">
+        <label for="HT/m²"> Prix HT/m² </label>
+        <input type="text" class="form-control" id="HT/m²" name="HT/m²" required placeholder="Prix HT/m²"/>
+      </div>
+ 
+        <div class="form-group col-md-2">
+          <label for="HT/m²"> Prix Total HT </label>
+          <input type="text" class="form-control" id="Prix total HT" name="HT/m²" required placeholder="Prix Total HT"/>
+        </div>
+ 
+      <div class="form-group col-md-1">
+        <label for="TVA"> TVA </label>
+        <input type="number" class="form-control" id="TVA" name="TVA" required placeholder="TVA"/>
+      </div>
+ 
+      <div class="form-group col-md-2">
+        <label for="Total TTC"> Prix Total TTC </label>
+        <input type="number" class="form-control" id="Total TTC" name="Total TTC" required placeholder="Prix Total TTC"/>
+      </div>
+    </div>
+   </fieldset>
+   <br>
+
+   <div class="form-group col-md-3">
+    <select (change)="onItemChange($event)">
+      <option name="">-- Mode de règlement --</option>
+      <option *ngFor = 'let mode of reglementMode ' [value]='mode.value'>{{mode.name}}</option>
+    </select>
+  </div>
+
    <br>
    <fieldset class="border border-dark p-2" *ngIf="select=='Comptant'">
        <legend class="w-auto"> REGLEMENT COMPTANT </legend>
@@ -220,6 +271,10 @@
        <label for="coût vendeur" > Coût vendeur: </label>
        <input type="text" id="coût vendeur" name="coût vendeur" style="margin-left: 5.1%" required placeholder="Coût vendeur"/>
      </div>
-   </fieldset>
+   </fieldset> 
+
+   <div class="col text-right">
+    <button type="submit" class="btn btn-primary ml-4">Enregistrer</button>
+    </div>
 
 </form>

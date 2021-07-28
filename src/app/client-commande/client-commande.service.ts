@@ -58,4 +58,9 @@ export class ClientCommandeService {
       "/api/supportexistant",
       { headers: this.headers })
   }
+  
+  public getListOfCom() {
+    return this.httpClient.get(`${this.baseUrl}/api/commercials`,
+      { headers: this.headers })
+  }
 }
