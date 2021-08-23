@@ -11,6 +11,7 @@ import { ClientCommandeService } from './client-commande.service';
 export class ClientCommandeComponent implements OnInit {
   select: any;
   vente: any;
+  id : any;
 
   agences =  [{'id': 0, 'nom': "" }];
   dataSource = new MatTableDataSource(this.agences);
@@ -72,8 +73,6 @@ export class ClientCommandeComponent implements OnInit {
       }
     });
 
-
-
     this.service.getAllOrigineContact().subscribe(data => {
      
       let datas = JSON.stringify(data)
@@ -100,44 +99,6 @@ export class ClientCommandeComponent implements OnInit {
       }
     })
 
-    this.service.getAllElementARenover().subscribe(data => {
-      
-      let datas = JSON.stringify(data)
-      let res = JSON.parse(datas)
-      this.elements = res
-      const row = this.elementsSource.data;
-      row.splice(0,1)
-      for(let i=0 ; i < res.length ; i++){
-        row.push(res[i]);
-        this.elementsSource.data = row;
-      }
-    })
-
-    this.service.getAllPrestations().subscribe(data => {
-    
-      let datas = JSON.stringify(data)
-      let res = JSON.parse(datas)
-      this.prestations = res
-      const row = this.prestationsSource.data;
-      row.splice(0,1)
-      for(let i=0 ; i < res.length ; i++){
-        row.push(res[i]);
-        this.prestationsSource.data = row;
-      }
-    })
-    this.service.getAllSupports().subscribe(data => {
-     
-      let datas = JSON.stringify(data)
-      let res = JSON.parse(datas)
-      this.supports = res
-      const row = this.supportSource.data;
-      row.splice(0,1)
-      for(let i=0 ; i < res.length ; i++){
-        row.push(res[i]);
-        this.supportSource.data = row;
-      }
-    })
-
     this.service.getListOfCom().subscribe(data => {
       console.log('commercials ===> ' , data);
       let datas = JSON.stringify(data)
@@ -156,14 +117,56 @@ export class ClientCommandeComponent implements OnInit {
 
   }
 
-  onItemChange(selectedValue: any){
+  onItemChange(selectedValue: any,){
   return this.select = selectedValue.target.value;
   }
 
  loadcomptravaux(selected : any){
-  return this.vente = selected.target.value,
-  console.log('toto', this.vente)
-  ;
+  this.vente = selected.target.value, 
+  this.service.getListElementRenover(this.vente).subscribe(data => {
+      
+    let datas = JSON.stringify(data)
+    let res = JSON.parse(datas)
+    this.elements = res
+    const row = this.elementsSource.data;
+    row.splice(0,1)
+    for(let i=0 ; i < res.length ; i++){
+      row.push(res[i]);
+      this.elementsSource.data = row;
+    }
+  })
+ }
+
+ loadPrestaRealiser(selected: any){
+
+  this.service.getListPrestARelaiser(selected.target.value).subscribe(data => {
+    let datas = JSON.stringify(data)
+    let res = JSON.parse(datas)
+    this.prestations = res
+    const row = this.prestationsSource.data;
+    row.splice(0,1)
+    for(let i=0 ; i < res.length ; i++){
+      row.push(res[i]);
+      this.prestationsSource.data = row;
+    }
+  })
+ }
+
+ loadSupportExistant(selected: any){
+   
+    this.service.getListSupportExistant(selected.target.value).subscribe(data => {  
+    console.log('listsupports', data);
+    let datas = JSON.stringify(data)
+    let res = JSON.parse(datas)
+    this.supports = res
+    const row = this.supportSource.data;
+    row.splice(0,1)
+    for(let i=0 ; i < res.length ; i++){
+      row.push(res[i]);
+      this.supportSource.data = row;
+    }
+  })
+
  }
 
 }

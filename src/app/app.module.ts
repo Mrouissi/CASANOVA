@@ -18,6 +18,7 @@ import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { FilterSearchPipe } from './filter-search.pipe';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { ClientCommandeComponent } from './client-commande/client-commande.component';
+import { RegisterClientComponent } from './register-client/register-client.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ClientCommandeComponent } from './client-commande/client-commande.compo
     ListComptesComponent,
     FilterSearchPipe,
     RegisterAdminComponent,
-    ClientCommandeComponent
+    ClientCommandeComponent,
+    RegisterClientComponent
   ],
   imports: [
     BrowserModule,

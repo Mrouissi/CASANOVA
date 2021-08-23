@@ -7,17 +7,16 @@ import { DisponibilityComponent } from './disponibility/disponibility.component'
 import { ListComptesComponent } from './list-comptes/list-comptes.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { RegistryComponent } from './registry/registry.component';
 import { UserComponent } from './user/user.component';
 import { ListComComponent } from './list-com/list-com.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import {RegisterAdminComponent} from './register-admin/register-admin.component';
 import {ClientCommandeComponent} from './client-commande/client-commande.component';
+import { RegisterClientComponent } from './register-client/register-client.component';
 
 const routes: Routes = [
   {path: 'admins', component: ListAdminComponent},
   {path: 'commercials', component: ListComComponent},
-  {path: 'commercial', component: RegistryComponent},
   {path: 'compte', component: CompteComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'cmd', component: CommandesComponent},
@@ -28,6 +27,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'registeradmin', component: RegisterAdminComponent},
   {path: 'commandeclient', component: ClientCommandeComponent},
+  {path:'commercial', component: RegisterClientComponent},
 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

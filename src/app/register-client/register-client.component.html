@@ -1,0 +1,170 @@
+
+<form
+name="form"
+(ngSubmit)="f.form.valid && onSubmit()"
+#f="ngForm"
+novalidate>
+<fieldset class="border border-dark p-2">
+    <legend class="w-auto"> Coordonnées Client</legend>
+    <div class="form-check form-check-inline col-md-6">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" 
+          type="radio" name="inlineRadioOptions" 
+          id="monsieur" 
+          value="Monsieur"
+          [(ngModel)]="form.civilite">
+          <label class="form-check-label" for="monsieur">M.</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" 
+          type="radio" 
+          name="inlineRadioOptions" 
+          id="madame" 
+          value="Madame"
+          [(ngModel)]="form.civilite">
+          <label class="form-check-label" for="madame">Mme</label>
+        </div>
+    </div>
+  <div  class="form-row  ml-auto mr-auto">
+         <div class="form-group col-md-6">
+           <label for="name"> Nom <span>*</span> </label>
+           <input type="text" 
+           class="form-control" 
+           name="name" 
+           [(ngModel)]="form.name"
+           required
+           required placeholder="Nom" 
+           #name="ngModel"
+           />
+           <div class="alert-danger" *ngIf="name.errors && f.submitted">
+              <div *ngIf="name.errors.required">Le nom est requis</div>
+           </div>
+         </div>
+         <div class="form-group col-md-6">
+           <label for="forname"> Prénom <span>*</span> </label>
+           <input type="text"
+            class="form-control"  
+            name="forname" 
+            [(ngModel)]="form.forname"
+            required
+            required placeholder="prénom" 
+            #forname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="forname.errors && f.submitted">
+              <div *ngIf="forname.errors.required">Le prénom est requis</div>
+           </div>
+         </div>
+         <div class="form-group col-md-6">
+           <label for="adresse"> Adresse <span>*</span> </label>
+           <input 
+           type="text" 
+           class="form-control" 
+           name="adresse" 
+           [(ngModel)]="form.adresse"
+           required
+           required placeholder="Adresse" 
+           #adresse="ngModel"
+           />
+           <div class="alert-danger" *ngIf="adresse.errors && f.submitted">
+            <div *ngIf="adresse.errors.required">L'adresse est requise</div>
+         </div>
+         </div>
+         <div class="form-group col-md-6">
+           <label for="cp"> Code Postal <span>*</span> </label>
+           <input 
+           type="text" 
+           class="form-control"  
+           name="cp" 
+           [(ngModel)]="form.cp"
+           required
+           required placeholder="Code Postal" 
+           #cp="ngModel"
+           />
+           <div class="alert-danger" *ngIf="cp.errors && f.submitted">
+            <div *ngIf="cp.errors.required">Le code postal est requis</div>
+          </div>
+         </div>
+         <div class="form-group col-md-6">
+           <label for="ville"> Ville <span>*</span> </label>
+           <input 
+           type="text" 
+           class="form-control" 
+           name="ville" 
+           [(ngModel)]="form.ville"
+           required
+           required placeholder="Ville" 
+           #ville="ngModel"
+           />
+            <div class="alert-danger" *ngIf="ville.errors && f.submitted">
+              <div *ngIf="ville.errors.required">La ville est requise</div>
+            </div>
+         </div>
+         <div class="form-group col-md-6">
+          <label for="departement"> Departement <span>*</span> </label>
+          <input 
+          type="text" 
+          class="form-control" 
+          name="departement" 
+          [(ngModel)]="form.dpt"
+          required
+          required placeholder="Departement" 
+          #departement="ngModel"
+          />
+           <div class="alert-danger" *ngIf="departement.errors && f.submitted">
+             <div *ngIf="departement.errors.required">La departement est requis</div>
+           </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="portable"> Portable <span>*</span> </label>
+            <input type="text" 
+            class="form-control"  
+            name="portable" 
+            [(ngModel)]="form.portable"
+            required
+            required placeholder="Portable"
+            #portable="ngModel"
+            />
+            <div class="alert-danger" *ngIf="portable.errors && f.submitted">
+              <div *ngIf="portable.errors.required">Le numéro de téléphone est requis</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="fixe"> Téléphone Fixe </label>
+            <input 
+            type="text" 
+            class="form-control"
+            name="fixe" 
+            [(ngModel)]="form.fixe"
+            required placeholder="Téléphone Fixe"
+            #fixe="ngModel"
+            />
+          </div>
+          <div class="form-group col-md-6">
+              <label for="email"> Email <span>*</span> </label>
+              <input type="email" 
+              class="form-control"  
+              name="email" 
+              [(ngModel)]="form.email"
+              required
+              email
+              required placeholder="Email"
+              #email="ngModel"
+              />
+              <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                  <div *ngIf="email.errors.required"> Le mail est requis </div>
+                  <div *ngIf="email.errors.email"> L'adresse mail n'est pas valide </div>
+              </div>
+          </div>
+          
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Enregistrer</button>
+  </div>
+  <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+    Erreur d'enregistrement!<br />{{ errorMessage }}
+  </div>
+  </fieldset>
+</form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Enregistrement du client réussi!
+    </div>

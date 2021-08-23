@@ -44,63 +44,26 @@
   </div>
  </fieldset>
  <br>
-  <fieldset class="border border-dark p-2">
-    <legend class="w-auto"> Coordonnées Client</legend>
-  <div  class="form-row  ml-auto mr-auto">
-         <div class="form-group col-md-6">
-           <label for="nom"> Nom <span>*</span> </label>
-           <input type="text" class="form-control" id="nom" name="nom" required placeholder="Nom" />
-         </div>
-         <div class="form-group col-md-6">
-           <label for="prénom"> Prénom <span>*</span> </label>
-           <input type="text" class="form-control" id="prénom" name="prénom" required placeholder="prénom" />
-         </div>
-         <div class="form-group col-md-6">
-           <label for="adresse"> Adresse <span>*</span> </label>
-           <input type="text" class="form-control" id="adresse" name="adresse" required placeholder="Adresse" />
-         </div>
-         <div class="form-group col-md-6">
-           <label for="cp"> Code Postal <span>*</span> </label>
-           <input type="text" class="form-control" id="cp" name="cp" required placeholder="Code Postal" />
-         </div>
-         <div class="form-group col-md-6">
-           <label for="nom"> Ville <span>*</span> </label>
-           <input type="text" class="form-control" id="ville" name="ville" required placeholder="Ville" />
-         </div>
-         <div class="form-group col-md-6">
-           <label for="portable"> Portable <span>*</span> </label>
-           <input type="text" class="form-control" id="portable" name="portable" required placeholder="Portable"/>
-         </div>
-         <div class="form-group col-md-6">
-           <label for="fixe"> Téléphone Fixe </label>
-           <input type="text" class="form-control" id="fixe" name="fixe" required placeholder="Téléphone Fixe"/>
-         </div>
-         <div class="form-group col-md-6">
-           <label for="fixe"> Email <span>*</span> </label>
-           <input type="text" class="form-control" id="Email" name="Email" required placeholder="Email"/>
-         </div>
-  </div>
-  </fieldset>
-   <br>
+ 
    <fieldset class="border border-dark p-2">
      <legend class="w-auto"> Information Chantier </legend>
      <div  class="form-row  ml-auto mr-auto">
      <div class="form-group col-md-3">
        <select (change)="loadcomptravaux($event)" style="margin-left: 2% ">
-         <option [ngValue]="">--Type de Travaux--</option> 
-         <option *ngFor = 'let travaux of typeTravaux'>{{travaux.nom}}</option>
+         <option >--Type de Travaux--</option> 
+         <option *ngFor = 'let travaux of typeTravaux' [value]='travaux.id' >{{travaux.nom}}</option>
        </select>
      </div>
      <div class="form-group col-md-3">
-       <select style="margin-left: 2% ">
-         <option value="">--Elément à rénover--</option>
-         <option *ngFor = 'let el of elements'>{{el.nom}}</option>
+       <select (change)="loadPrestaRealiser($event)" style="margin-left: 2% ">
+         <option>--Elément à rénover--</option>
+         <option *ngFor = 'let el of elements' [value]='el.id'>{{el.nom}}</option>
        </select>
      </div>
      <div class="form-group col-md-3">
-       <select style="margin-left: 2% ">
-         <option value="">-- Prestation à réaliser --</option>
-         <option *ngFor = 'let presta of prestations'>{{presta.nom}}</option>
+       <select (change) ="loadSupportExistant($event)" style="margin-left: 2% ">
+         <option>-- Prestation à réaliser --</option>
+         <option *ngFor = 'let presta of prestations' [value]='presta.id'>{{presta.nom}}</option>
        </select>
      </div>
        <div class="form-group col-md-3">

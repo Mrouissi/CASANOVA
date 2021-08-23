@@ -63,4 +63,20 @@ export class ClientCommandeService {
     return this.httpClient.get(`${this.baseUrl}/api/commercials`,
       { headers: this.headers })
   }
+
+  public getListElementRenover(id: any){
+    return this.httpClient.get(this.baseUrl+
+      "/api/ElementArenover/typestravaux/"+ id, { 'headers': this.headers })
+  }
+
+  public getListPrestARelaiser(id: any){
+
+    return this.httpClient.get(this.baseUrl+
+      "/api/prestationrealiser/elementARenover/"+ id, { 'headers': this.headers })
+  }
+
+  public getListSupportExistant(id: any){
+    return this.httpClient.get(this.baseUrl+
+      "/api/supportexistant/prestationarealiser/"+ id, { 'headers': this.headers })
+  }
 }
