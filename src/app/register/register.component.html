@@ -1,53 +1,123 @@
-<form id="authenticate" action="register" method="post">
-
-    <div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
+<div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
+    
     <h1 *ngIf="!isCommercial"> Création de compte</h1>
     <h1 *ngIf="isCommercial"> Enregistrement d'un commercial</h1>
     <hr>
-                <input type="text" *ngIf="isCommercial" 
-                class="form-control" 
-                id="nom" 
+        <form
+        name="form"
+        (ngSubmit)= "f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate> 
+   
+            <div class="form-group" *ngIf="isCommercial" >
+                <input type="text" 
+                class="form-control"  
                 name="nom" 
                 [(ngModel)]="form.nom" 
                 required placeholder="Nom"
+                required
+                #nom="ngModel"
                 style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" 
-                class="form-control" id="prenom" 
+                <div class="alert-danger" *ngIf="nom.errors && f.submitted">
+                    <div *ngIf="nom.errors.required">Le nom est requis</div>
+                </div>
+            </div>
+
+            <div class="form-group" *ngIf="isCommercial">
+                <input type="text" 
+                class="form-control"  
                 name="prenom" 
                 [(ngModel)]="form.prenom" 
+                required
+                #prenom="ngModel"
                 required placeholder="Prénom"
                 style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" 
-                class="form-control" 
-                id="telephone" 
-                name="telephone" 
-                [(ngModel)]="form.tel_portable" 
-                required placeholder="Téléphone"
-                style="margin-bottom: 5%;" />
-                <input type="text" 
-                class="form-control" 
-                id="email" name="email" 
-                [(ngModel)]="form.email" 
-                required placeholder="E-mail"
-                style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial"
-                class="form-control" 
-                id="agence" 
-                name="agence" 
-                [(ngModel)]="form.agence" required placeholder="Nom de l'agence"
-                style="margin-bottom: 5%;" />
-                <input type="password" 
-                class="form-control" id="password" 
-                name="password" [(ngModel)]="form.password" 
-                required placeholder="Mot de passe"
-                style="margin-bottom: 5%;" />
-                <br>
-                <button type="submit" *ngIf="isCommercial" class="btn btn-success" style="float: right;" (click)="doCommercialRegister()">
-                    Enregistrer
-                </button>
 
-                <button type="submit" *ngIf="!isCommercial" class="btn btn-success" style="float: right;" (click)="doClientUpdate()">
+                <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
+                    <div *ngIf="prenom.errors.required">Le prénom est requis</div>
+                </div>
+            </div> 
+            <div class="form-group" *ngIf="isCommercial">
+                <input type="number"  
+                    class="form-control" 
+                    name="telephone" 
+                    [(ngModel)]="form.tel_portable" 
+                    required
+                    #telephone="ngModel"
+                    required placeholder="Téléphone"
+                    style="margin-bottom: 5%;" />
+
+                    <div class="alert-danger" *ngIf="telephone.errors && f.submitted">
+                        <div *ngIf="telephone.errors.required">Le téléphone est requis</div>
+                    </div>
+            </div> 
+            <div class="form-group">
+                <input type="email" 
+                    class="form-control" 
+                    name="email" 
+                    [(ngModel)]="form.email" 
+                    required
+                    email
+                    #email="ngModel"
+                    required placeholder="E-mail"
+                    style="margin-bottom: 5%;" />
+
+                    <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                        <div *ngIf="email.errors.required">Le mail est requis</div>
+                        <div *ngIf="email.errors.email">
+                        l'adresse mail n'est pas valide
+                        </div>
+                    </div>
+            </div> 
+            <div class="form-group" *ngIf="isCommercial">
+                <input type="text" 
+                    class="form-control"  
+                    name="agence" 
+                    required
+                    #agence="ngModel"
+                    [(ngModel)]="form.agence" 
+                    required placeholder="Nom de l'agence"
+                    style="margin-bottom: 5%;" />
+                    <div class="alert-danger" *ngIf="agence.errors && f.submitted">
+                        <div *ngIf="agence.errors.required">Le nom de l'agence est requis</div>
+                    </div>
+            </div> 
+            <div class="form-group">
+                <input type="password" 
+                    class="form-control"
+                    name="password" 
+                    required
+                    #password="ngModel"
+                    [(ngModel)]="form.password" 
+                    required placeholder="Mot de passe"
+                    minlength="6"
+                    style="margin-bottom: 5%;" />
+                    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors.required">Le mot de passe est requis</div>
+                        <div *ngIf="password.errors.minlength">
+                        Le mot de passe doit comporter au moins 6 caractères
+                        </div>
+                    </div>
+            </div>
+
+            <div *ngIf="isCommercial">
+                <button  class="btn btn-success" (click)= "registerCommercial()" style="float: right">
                     Enregistrer
                 </button>
-        </div>
-</form>
+            </div>
+          
+            <div *ngIf="!isCommercial">
+                <button class="btn btn-success" (click)="updateClient()" style="float: right">
+                    Enregistrer
+                </button>
+            </div>   
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Erreur D'Enregistrement!<br />{{ errorMessage }}
+            </div> 
+
+            <div class="alert alert-success" *ngIf="isSuccessful">
+                Enregistrement reussi!
+              </div>
+
+        </form>    
+</div>

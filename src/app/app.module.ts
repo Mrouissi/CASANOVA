@@ -19,6 +19,7 @@ import { FilterSearchPipe } from './filter-search.pipe';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { ClientCommandeComponent } from './client-commande/client-commande.component';
 import { RegisterClientComponent } from './register-client/register-client.component';
+import { ListeClientsByComComponent } from './liste-clients-by-com/liste-clients-by-com.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RegisterClientComponent } from './register-client/register-client.compo
     FilterSearchPipe,
     RegisterAdminComponent,
     ClientCommandeComponent,
-    RegisterClientComponent
+    RegisterClientComponent,
+    ListeClientsByComComponent
   ],
   imports: [
     BrowserModule,

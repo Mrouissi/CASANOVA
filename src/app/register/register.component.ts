@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   };
   isSuccessful = false;
   isSignUpFailed = false;
+  clicked= false;
   errorMessage = '';
   roles: string[] = [];
 
@@ -42,44 +43,62 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  doCommercialRegister(): void {
-    const commercial = new Commercial(this.form.agence,
-      this.form.nom,
-      this.form.prenom,
-      this.form.tel_portable,
-      this.form.role,
-      this.form.password,
-      this.form.email);
+  onSubmit(): void { 
 
-    console.warn(commercial);
+    if (this.clicked) {
 
-    this.service.registerCommercial(commercial).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+      const commercial = new Commercial(this.form.agence,
+        this.form.nom,
+        this.form.prenom,
+        this.form.tel_portable,
+        this.form.role,
+        this.form.password,
+        this.form.email);
+
+      this.service.registerCommercial(commercial).subscribe(
+        data => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+
+    } else {
+
+      this.service.createClientPassword(this.form.password, this.form.email).subscribe(
+        data => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );   
+    }
   }
-  doClientUpdate():void {
 
-    this.service.createClientPassword(this.form.password, this.form.email).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+  registerCommercial(): void {
+    this.clicked=true;
+  }
 
+  updateClient(): void{
     
+    this.clicked=false;
   }
 }
+
+
+
+
+
+
+
+
+
 

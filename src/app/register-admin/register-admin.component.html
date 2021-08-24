@@ -1,21 +1,104 @@
-<form id="authenticate" action="register" method="post">
+<div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
+       <h1> Enregistrement d'un Administrateur </h1>
+       <hr>
+       <form 
+       name="form"
+       (ngSubmit)="f.form.valid && doAdminRegister()"
+       #f="ngForm"
+       novalidate>
+              <div class="form-group">
+                     <input type="text"
+                     class="form-control" 
+                     name="nom" 
+                     [(ngModel)]="form.nom" 
+                     required
+                     required placeholder="Nom"
+                     #nom="ngModel"
+                     style="margin-bottom: 5%;" />
+                     <div class="alert-danger" *ngIf="nom.errors && f.submitted">
+                            <div *ngIf="nom.errors.required">Le nom est requis</div>
+                     </div>
+              </div>
+              <div class="form-group">
+                     <input type="text" 
+                     class="form-control" 
+                     name="prenom" 
+                     [(ngModel)]="form.prenom" 
+                     required placeholder="Prénom"
+                     required
+                     #prenom="ngModel"
+                     style="margin-bottom: 5%;" />
 
-  <div style=" width: 30%;margin-left: 35%;     margin-top: 5%; ">
-    <h1> Enregistrement d'un Administrateur </h1>
-    <hr>
-    <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required placeholder="Nom"
-           style="margin-bottom: 5%;" />
-    <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required placeholder="Prénom"
-           style="margin-bottom: 5%;" />
-    <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="form.tel_portable" required placeholder="Téléphone"
-           style="margin-bottom: 5%;" />
-    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="form.email" required placeholder="E-mail"
-           style="margin-bottom: 5%;" />
-    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required placeholder="Mot de passe"
-           style="margin-bottom: 5%;" />
-    <br>
-    <button type="submit"  class="btn btn-success" style="float: right;" (click)="doAdminRegister()">
-      Enregistrer
-    </button>
-  </div>
-</form>
+                     <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
+                            <div *ngIf="prenom.errors.required">Le prénom est requis</div>
+                     </div>
+              </div>
+              <div class="form-group">
+                     <input type="number" 
+                     class="form-control" 
+                     name="telephone" 
+                     [(ngModel)]="form.tel_portable" 
+                     required placeholder="Téléphone"
+                     required
+                     #telephone="ngModel"
+                     style="margin-bottom: 5%;" />
+
+                     <div class="alert-danger" *ngIf="telephone.errors && f.submitted">
+                            <div *ngIf="telephone.errors.required">Le téléphone est requis</div>
+                     </div>
+              </div>
+              <div class="form-group">
+                     <input type="email" 
+                     class="form-control" 
+                     name="email" 
+                     [(ngModel)]="form.email" 
+                     required placeholder="E-mail"
+                     required
+                     email
+                     #email="ngModel"
+                     style="margin-bottom: 5%;" />
+
+                     <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                            <div *ngIf="email.errors.required">Le mail est requis</div>
+                            <div *ngIf="email.errors.email">
+                            l'adresse mail n'est pas valide
+                            </div>
+                     </div>
+              </div>
+              <div class="form-group">
+                     <input type="password" 
+                     class="form-control" 
+                     name="password" 
+                     [(ngModel)]="form.password" 
+                     required placeholder="Mot de passe"
+                     required
+                     minlength="6"
+                     #password="ngModel"
+                     style="margin-bottom: 5%;" />
+                     <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                            <div *ngIf="password.errors.required">Le mot de passe est requis</div>
+                            <div *ngIf="password.errors.minlength">
+                            Le mot de passe doit comporter au moins 6 caractères
+                            </div>
+                     </div>
+              </div>
+
+              <div>
+                     <button type="submit"  class="btn btn-success" style="float: right;">
+                            Enregistrer
+                     </button>
+              </div>
+
+              <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+
+                     Erreur D'Enregistrement!<br />{{ errorMessage }}
+                     
+              </div> 
+
+              <div class="alert alert-success" *ngIf="isSuccessful">
+                     
+                     Enregistrement reussi!
+
+              </div>
+       </form>
+</div>
