@@ -4,20 +4,49 @@
     <h1 *ngIf="!isCommercial"> Création de compte</h1>
     <h1 *ngIf="isCommercial"> Enregistrement d'un commercial</h1>
     <hr>
-                <input type="text" *ngIf="isCommercial" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required placeholder="Nom"
-                    style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required placeholder="Prénom"
-                    style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial" class="form-control" id="telephone" name="telephone" [(ngModel)]="form.tel_portable" required placeholder="Téléphone"
-                    style="margin-bottom: 5%;" />
-                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="form.email" required placeholder="E-mail"
-                    style="margin-bottom: 5%;" />
-                <input type="text" *ngIf="isCommercial"class="form-control" id="agence" name="agence" [(ngModel)]="form.agence" required placeholder="Nom de l'agence"
-                    style="margin-bottom: 5%;" />
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required placeholder="Mot de passe"
-                    style="margin-bottom: 5%;" />
+                <input type="text" *ngIf="isCommercial" 
+                class="form-control" 
+                id="nom" 
+                name="nom" 
+                [(ngModel)]="form.nom" 
+                required placeholder="Nom"
+                style="margin-bottom: 5%;" />
+                <input type="text" *ngIf="isCommercial" 
+                class="form-control" id="prenom" 
+                name="prenom" 
+                [(ngModel)]="form.prenom" 
+                required placeholder="Prénom"
+                style="margin-bottom: 5%;" />
+                <input type="text" *ngIf="isCommercial" 
+                class="form-control" 
+                id="telephone" 
+                name="telephone" 
+                [(ngModel)]="form.tel_portable" 
+                required placeholder="Téléphone"
+                style="margin-bottom: 5%;" />
+                <input type="text" 
+                class="form-control" 
+                id="email" name="email" 
+                [(ngModel)]="form.email" 
+                required placeholder="E-mail"
+                style="margin-bottom: 5%;" />
+                <input type="text" *ngIf="isCommercial"
+                class="form-control" 
+                id="agence" 
+                name="agence" 
+                [(ngModel)]="form.agence" required placeholder="Nom de l'agence"
+                style="margin-bottom: 5%;" />
+                <input type="password" 
+                class="form-control" id="password" 
+                name="password" [(ngModel)]="form.password" 
+                required placeholder="Mot de passe"
+                style="margin-bottom: 5%;" />
                 <br>
                 <button type="submit" *ngIf="isCommercial" class="btn btn-success" style="float: right;" (click)="doCommercialRegister()">
+                    Enregistrer
+                </button>
+
+                <button type="submit" *ngIf="!isCommercial" class="btn btn-success" style="float: right;" (click)="doClientUpdate()">
                     Enregistrer
                 </button>
         </div>

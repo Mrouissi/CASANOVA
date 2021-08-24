@@ -29,5 +29,12 @@ export class RegisterService {
 
     console.warn('un seul mot' + newCommercial);
   }
+
+  createClientPassword (password: string, email: string): Observable<any> {
+    return this.httpClient.post(this.baseUrl + 'clients/' + email, {
+      password: password,
+    }, {headers: this.headers });
+
+  }
 }
 

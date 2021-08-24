@@ -17,8 +17,8 @@ export class RegisterClientService {
 
   constructor(private httpClient: HttpClient) {}
 
-  registerClient(newClient: Client): Observable<any> {
-    return this.httpClient.post(this.baseUrl + 'registerclient', {
+  registerClient(newClient: Client, id: number): Observable<any> {
+    return this.httpClient.post(this.baseUrl + 'commercial/' + id + "/registerclient" , {
       nom: newClient.nom,
       prenom: newClient.prenom,
       tel_portable: newClient.tel_portable,
@@ -29,7 +29,6 @@ export class RegisterClientService {
       dpt : newClient.dpt,
       adresse: newClient.adresse,
       tel_fixe: newClient.tel_fixe,
-      commercial_user_id: newClient.commercial_user_id,
     }, {headers: this.headers});
   }
 }

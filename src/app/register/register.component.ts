@@ -65,6 +65,21 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  doClientUpdate():void {
 
+    this.service.createClientPassword(this.form.password, this.form.email).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+
+    
+  }
 }
 

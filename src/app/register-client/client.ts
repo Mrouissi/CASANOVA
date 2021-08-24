@@ -9,6 +9,5 @@ export class Client {
         public code_postal: string,
         public dpt : string,
         public adresse: string,
-        public tel_fixe: string,
-        public commercial_user_id: number) {}
+        public tel_fixe: string) {}
 }

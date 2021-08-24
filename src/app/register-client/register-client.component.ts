@@ -46,7 +46,7 @@ export class RegisterClientComponent implements OnInit {
     civilite:null,
     fixe: null,
     email: null,
-    commercial_id:null,
+    commercial_id: null
   };
 
   isSuccessful = false;
@@ -70,12 +70,11 @@ export class RegisterClientComponent implements OnInit {
       this.form.ville,
       this.form.cp,
       this.form.dpt,
-      this.form.fixe,
       this.form.adresse,
-      this.form.commercial_id,
+      this.form.fixe,
       );
 
-    this.service.registerClient(client).subscribe(
+    this.service.registerClient(client, this.form.commercial_id).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
