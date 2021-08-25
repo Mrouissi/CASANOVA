@@ -157,14 +157,20 @@ novalidate>
           </div>
           
   </div>
+  
+
+  </fieldset>
+  <br>
   <div class="form-group">
-    <button class="btn btn-primary btn-block">Enregistrer</button>
+    <button class="btn btn-success" style="float: left;">Enregistrer</button>
   </div>
   <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
     Erreur d'enregistrement!<br />{{ errorMessage }}
   </div>
-  </fieldset>
+
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Enregistrement du client réussi !
+  </div>
+
 </form>
-    <div class="alert alert-success" *ngIf="isSuccessful">
-      Enregistrement du client réussi!
-    </div>
+    

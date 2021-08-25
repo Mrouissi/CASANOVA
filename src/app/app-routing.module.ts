@@ -13,6 +13,8 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
 import {RegisterAdminComponent} from './register-admin/register-admin.component';
 import {ClientCommandeComponent} from './client-commande/client-commande.component';
 import { RegisterClientComponent } from './register-client/register-client.component';
+import { ListeClientsByComComponent } from './liste-clients-by-com/liste-clients-by-com.component';
+
 
 const routes: Routes = [
   {path: 'admins', component: ListAdminComponent},
@@ -28,6 +30,7 @@ const routes: Routes = [
   {path: 'registeradmin', component: RegisterAdminComponent},
   {path: 'commandeclient', component: ClientCommandeComponent},
   {path:'commercial', component: RegisterClientComponent},
+  {path:'listeclientscom', component: ListeClientsByComComponent},
 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

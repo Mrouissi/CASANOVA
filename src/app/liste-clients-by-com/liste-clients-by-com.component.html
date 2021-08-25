@@ -1,1 +1,66 @@
-<p>liste-clients-by-com works!</p>
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+  
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Liste des clients</h1>
+  
+                    <!-- DataTales Example -->
+                  <div class="card shadow mb-4">
+                      
+                          <div>
+                              <input [(ngModel)]="searchClient" class="form-control bg-light border-0 small" placeholder="Rechercher..."
+                              aria-label="Search" aria-describedby="basic-addon2">
+                          </div>
+                    
+                      <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Civilité</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Ville</th>
+                                            <th>Téléphone</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Civilité</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Ville</th>
+                                            <th>Téléphone</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr *ngFor="let client of clients | filterSearch: searchClient">
+                                            <td>{{client.civilite}}</td>
+                                            <td>{{client.nom}}</td>
+                                            <td>{{client.prenom}}</td>
+                                            <td>{{client.ville}}</td>
+                                            <td>{{client.tel_portable}}</td>
+                                            <td>{{client.email}}</td>
+                                            <td>
+                                                <a class="btn btn-light" href="/commandeclient" role="button">Nouvelle Commande</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+  
+                </div>
+                <!-- /.container-fluid -->
+  
+            </div>
+            <!-- End of Main Content -->

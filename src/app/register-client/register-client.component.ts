@@ -12,27 +12,12 @@ import { RegisterClientService } from './register-client.service';
 export class RegisterClientComponent implements OnInit {
   user = [{
     "id": 0,
-    "email": "",
-    "password": "",
-    "nom": "",
-    "prenom": "",
-    "role": "",
-    "isEnabled": true,
-    "civilite": "",
-    "ville": "",
-    "code_postal": "",
-    "dpt": "",
-    "adresse": "",
-    "tel_fixe": "",
-    "tel_portable": "",
    }];
 
   dataSource = new MatTableDataSource(this.user);
   userData = {
     roles:[],
     "id":'',
-    "nom": '',
-    "prenom":'',
   }
 
   form: any = {
